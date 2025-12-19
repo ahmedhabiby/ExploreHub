@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cairo — Food & Cafes Guide</title>
+    <meta name="description" content="Cairo food: koshary, taameya, street eats, and riverside cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cairo}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Cairo</span>
+                <h1>Food & Cafes</h1>
+                <p class="lead">From traditional koshary to chic riverside cafes.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Egyptian cuisine"
+                 th:style="'background:url(' + @{/images/الطعمية-المصرية-مثل-المطاعم.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- What to Try -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">What to Try</h2>
+            <ul>
+                <li>Koshary, taameya (falafel), molokhia</li>
+                <li>Fresh juices and traditional desserts</li>
+                <li>Nile-side coffee and tea</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Koshary"
+                         th:style="'background:url(' + @{/images/koshry.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Cafe"
+                         th:style="'background:url(' + @{/images/2025_1_19_11_51_3_666.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

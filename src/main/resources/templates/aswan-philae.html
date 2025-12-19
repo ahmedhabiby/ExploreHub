@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aswan & Philae — The Nile</title>
+    <meta name="description" content="Discover Aswan's Nubian culture and the island Temple of Philae in southern Egypt." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/nile}">Back to The Nile</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Nile</span>
+                <h1>Aswan &amp; Philae</h1>
+                <p class="lead">Granite quarries, Nubian heritage, and the island Temple of Isis relocated to Agilkia.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Philae Temple island"
+                 style="background:url('https://images.unsplash.com/photo-1544989430-7f9b1d9a0b2a?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>
+                Aswan’s laid-back rhythm and granite boulders contrast with elegant feluccas and island temples.
+                Philae, saved from flooding, is reached by boat.
+            </p>
+        </div>
+    </section>
+
+    <!-- Things to See -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Things to See</h2>
+            <ul>
+                <li>Unfinished Obelisk in the granite quarries</li>
+                <li>Boat to Philae Temple (Agilkia Island)</li>
+                <li>Nubian village and botanical gardens</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card"><div class="card__media" style="background:url(@{/images/Philae-colonnade.jpg}) center/cover no-repeat;" role="img" aria-label="Philae colonnade"></div></div>
+                <div class="card"><div class="card__media" style="background:url(@{/images/Feluccas-in-Aswan.jpg}) center/cover no-repeat;" role="img" aria-label="Feluccas in Aswan"></div></div>
+                <div class="card"><div class="card__media" style="background:url(@{/images/Unfinished-obelisk.jpg}) center/cover no-repeat;" role="img" aria-label="Unfinished obelisk"></div></div>
+                <div class="card"><div class="card__media" style="background:url(@{/images/Nubian-village-colors.jpg}) center/cover no-repeat;" role="img" aria-label="Nubian village colors"></div></div>
+                <div class="card"><div class="card__media" style="background:url(@{/images/Botanical-island.jpg}) center/cover no-repeat;" role="img" aria-label="Botanical Island"></div></div>
+                <div class="card"><div class="card__media" style="background:url(@{/images/Philae-at-dusk.jpg}) center/cover no-repeat;" role="img" aria-label="Philae at dusk"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles &amp; Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" style="background:url(@{/images/Boat-logistics.jpg}) center/cover no-repeat;" role="img" aria-label="Boat logistics"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Boating to Philae</h3>
+                        <div class="card__meta">How to arrange boats and ideal times for light.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" style="background:url(@{/images/Nubian-culture.jpg}) center/cover no-repeat;" role="img" aria-label="Nubian culture"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Nubian Aswan</h3>
+                        <div class="card__meta">Visiting villages, colors, crafts, and cuisine.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" style="background:url(@{/images/Feluccas-in-Aswan.jpg}) center/cover no-repeat;" role="img" aria-label="Felucca"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Sailing at Sunset</h3>
+                        <div class="card__meta">Felucca routes and photo tips on the Nile.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>First boats to Philae have softer light and fewer crowds</li>
+                <li>Carry cash for boatmen and small fees</li>
+                <li>Combine with Nubian Museum and botanical gardens</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxor — Old Luxor Guide</title>
+    <meta name="description" content="Old Luxor: Avenue of Sphinxes, souqs, corniche walks, and routes between temples." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/luxor-city}" class="brand"><span class="brand__logo"></span><span>ExploreHub</span></a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Luxor</span>
+                <h1>Old Luxor</h1>
+                <p class="lead" th:text="${heroText}">Temples, markets, and riverfront life in Egypt’s open‑air museum.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Luxor Old"
+                 th:style="|background:url('${heroImage}') center/cover no-repeat;|"></div>
+        </div>
+    </section>
+
+    <!-- Routes -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Routes</h2>
+            <ul>
+                <li th:each="route : ${routes}" th:text="${route}">Route name</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li th:each="tip : ${tips}" th:text="${tip}">Tip text</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

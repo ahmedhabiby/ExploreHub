@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hurghada — Historic Mosques Guide</title>
+    <meta name="description" content="Hurghada mosques: El Mina Masjid by the marina and neighborhood mosques in El Dahar." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/hurghada-city}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Hurghada</span>
+                <h1>Historic Mosques</h1>
+                <p class="lead">Marina landmark and neighborhood prayer halls.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="El Mina Masjid"
+                 th:style="'background:url(' + @{/images/citadel-mosque.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <ul>
+                <li>El Mina Masjid by the marina</li>
+                <li>El Dahar neighborhood mosques</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Etiquette & Tips</h2>
+            <ul>
+                <li>Dress modestly; remove shoes where required</li>
+                <li>Visit outside prayer times for interiors</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

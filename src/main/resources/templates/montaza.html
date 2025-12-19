@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Montaza Gardens — The Med</title>
+    <meta name="description" content="Montaza Gardens: palatial grounds, palm avenues, and sea views in Alexandria's east." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/med}">Back to The Med</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Med</span>
+                <h1>Montaza Gardens</h1>
+                <p class="lead">Palm-lined gardens and sea views around former royal palaces.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Montaza Gardens"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1561231992-4c05c2a444ef?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>
+                Expansive lawns, bridges, and Mediterranean vistas make Montaza a favorite for picnics and leisurely walks.
+            </p>
+        </div>
+    </section>
+
+    <!-- THINGS TO DO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Things to Do</h2>
+            <ul>
+                <li>Stroll the waterfront paths and gardens</li>
+                <li>Photo stops by the palaces</li>
+                <li>Enjoy seaside cafes</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Palace facade"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1561231992-4c05c2a444ef?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Garden paths"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Sea view"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1625677631217-6e4ac8d9749c?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES & GUIDES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Picnic"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Perfect Picnic Spots</h3>
+                        <div class="card__meta">Shaded lawns and coastal viewpoints to relax.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Photo tour"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Photo Walk</h3>
+                        <div class="card__meta">Capture arches, bridges, and palm silhouettes.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRACTICAL INFO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Modest entry fee; hours vary</li>
+                <li>Weekends can be busy—arrive earlier</li>
+                <li>Bring water and sun protection</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

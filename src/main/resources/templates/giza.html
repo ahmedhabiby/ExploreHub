@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giza City Guide — ExploreHub</title>
+    <meta name="description" content="Giza city guide: what to see and do, museums, historic mosques, Old Giza, Nile views, food & cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand"><span class="brand__logo"></span><span>ExploreHub</span></a>
+        <nav class="nav__links"><a th:href="@{/cities}">Back to Cities</a></nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Giza</h1>
+                <p class="lead">Home to the Pyramids Plateau, lively neighborhoods, and sweeping Nile views.</p>
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip"><a th:href="@{/giza-museums}" style="color:inherit">Museums</a></span>
+                    <span class="chip"><a th:href="@{/giza-mosques}" style="color:inherit">Historic Mosques</a></span>
+                    <span class="chip"><a th:href="@{/giza-old}" style="color:inherit">Old Giza</a></span>
+                    <span class="chip"><a th:href="@{/giza-nile}" style="color:inherit">Nile Views</a></span>
+                    <span class="chip"><a th:href="@{/giza-food}" style="color:inherit">Food & Cafes</a></span>
+                </div>
+            </div>
+            <div class="hero__media" role="img" aria-label="Giza Pyramids"
+                 th:style="|background:url('@{/images/960x0960x0.jpg}') center/cover no-repeat|"></div>
+        </div>
+    </section>
+
+    <!-- Museums Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Grand Egyptian Museum"
+                         th:style="|background:url('@{/images/2022_8_11_17_2_3_46.jpg}') center/cover no-repeat|"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Grand Egyptian Museum</h3>
+                        <div class="card__meta">Next to the Pyramids Plateau; Egypt's newest mega-museum.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Solar Boat"
+                         th:style="|background:url('@{/images/2022_9_27_21_20_1_54.jpg}') center/cover no-repeat|"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Khufu's Boat Museum</h3>
+                        <div class="card__meta">Reassembled ancient boat near the Great Pyramid.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historic Mosques Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>Al-Sayeda Aisha Mosque (Greater Cairo)</li>
+                <li>Neighborhood mosques around Al-Haram Street</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Old Giza Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Giza</h2>
+            <ul>
+                <li>Pyramids Plateau: Great Pyramid, Sphinx, panoramic points</li>
+                <li>Local souqs off Al-Haram Street</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Nile Views Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Nile boat dinners along Giza corniche</li>
+                <li>Bridges at sunset facing Cairo skyline</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Food & Cafes Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food & Cafes</h2>
+            <ul>
+                <li>Traditional grills near the Plateau</li>
+                <li>Riverside cafes and dessert shops</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

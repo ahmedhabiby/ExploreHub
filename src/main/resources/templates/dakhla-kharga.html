@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Dakhla & Kharga — Deserts & Oases'">Dakhla & Kharga — Deserts & Oases</title>
+    <meta name="description" content="Dakhla and Kharga: mud-brick villages, monasteries, and desert archaeology in Egypt's Western Desert." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/deserts}">Back to Deserts & Oases</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main Content -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — Deserts & Oases</span>
+                <h1 th:text="'Dakhla & Kharga'">Dakhla & Kharga</h1>
+                <p class="lead">Historic oases with traditional hamlets, ancient sites, and serene desert vistas.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Dakhla oasis village"
+                 th:style="'background:url(' + @{/images/Dakhla-oasis.jpg} + ') center/cover no-repeat;'"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>Dakhla's mud-brick architecture and Kharga's desert monasteries offer a quieter, cultural side of the Western Desert.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Walk historic villages and palm gardens</li>
+                <li>Visit early Christian monasteries and tombs</li>
+                <li>Enjoy starry night skies far from city lights</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Mud-brick village"
+                         th:style="'background:url(' + @{/images/Al-Qasr-Village-Walk.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Palm gardens"
+                         th:style="'background:url(' + @{/images/palm-oasis.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Desert road"
+                         th:style="'background:url(' + @{/images/Desert-Drives.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Monasteries"
+                         th:style="'background:url(' + @{/images/Desert-Monasteries.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Desert Monasteries</h3>
+                        <div class="card__meta">An intro to early Christian heritage sites.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Local crafts"
+                         th:style="'background:url(' + @{/images/ph7KhCxcn4Jzabk9fRavLK-1200-80ph7KhCxcn4Jzabk9fRavLK-1200-80.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Oasis Crafts</h3>
+                        <div class="card__meta">Pottery, weaving, and where to buy.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Road distances are long; plan fuel and daylight</li>
+                <li>Dress modestly in villages</li>
+                <li>Hire local guides for heritage sites</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

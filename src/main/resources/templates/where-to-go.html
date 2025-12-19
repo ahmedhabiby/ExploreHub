@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where to Go</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/about}">About Egypt</a>
+            <a class="active" th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What's On</a>
+            <a th:href="@{/useful-info}">Useful Information</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Where to Go</h1>
+            <p class="lead">
+                From the Nile heartlands to the Red Sea coast and Mediterranean cities, pick a region to explore.
+                Looking for specific cities?
+                <a th:href="@{/cities}" style="text-decoration:underline">Browse Cities</a>.
+            </p>
+
+            <div class="grid grid--cards">
+                <a class="card" th:href="@{/nile}">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Feluca sailing on the Nile"
+                         style="background:url('/images/2022_8_7_18_24_45_511.jpeg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Nile</h3>
+                        <div class="card__meta">Luxor, Aswan, Edfu, Kom Ombo</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/red-sea}">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Red Sea resort"
+                         style="background:url('/images/2022_8_7_18_27_31_403.jpeg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Red Sea</h3>
+                        <div class="card__meta">Hurghada, Sharm El-Sheikh, Marsa Alam</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/med}">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Alexandria Corniche"
+                         style="background:url('/images/2022_10_3_13_20_11_515.jpg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Med</h3>
+                        <div class="card__meta">Alexandria, North Coast</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/deserts}">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Western Desert dunes"
+                         style="background:url('/images/2022_8_7_18_29_43_278.jpeg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Deserts & Oases</h3>
+                        <div class="card__meta">Siwa, Bahariya, Farafra</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

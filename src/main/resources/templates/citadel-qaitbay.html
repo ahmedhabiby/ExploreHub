@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Citadel of Qaitbay — The Med</title>
+    <meta name="description" content="Citadel of Qaitbay: a 15th-century fortress on the site of the ancient Lighthouse of Alexandria." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand"><span class="brand__logo"></span><span>ExploreHub</span></a>
+        <nav class="nav__links">
+            <a th:href="@{/med}">Back to The Med</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Med</span>
+                <h1>Citadel of Qaitbay</h1>
+                <p class="lead">A seaside fortress guarding Alexandria's harbor, built on the site of the ancient lighthouse.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Citadel of Qaitbay"
+                 th:style="'background:url(' + @{/images/citadel\ of\ qaitbay.jpg} + ') center/cover no-repeat;'"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>Built in 1477 CE, the citadel offers sweeping sea views and a glimpse into Alexandria's maritime defenses.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Things to Do</h2>
+            <ul>
+                <li>Walk ramparts for harbor panoramas</li>
+                <li>Explore the inner courtyard and exhibits</li>
+                <li>Sunset photos along the corniche</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card"><div class="card__media" th:style="'background:url(' + @{/images/citadel.jpg} + ') center/cover no-repeat;'"></div></div>
+                <div class="card"><div class="card__media" th:style="'background:url(' + @{/images/harbor.jpg} + ') center/cover no-repeat;'"></div></div>
+                <div class="card"><div class="card__media" th:style="'background:url(' + @{/images/corniche.jpg} + ') center/cover no-repeat;'"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" th:style="'background:url(' + @{/images/history.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">From Lighthouse to Citadel</h3>
+                        <div class="card__meta">How the fortress rose on the ancient Pharos site.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" th:style="'background:url(' + @{/images/sunset.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Sunset on the Corniche</h3>
+                        <div class="card__meta">Best vantage points for golden-hour photos.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Open most days; modest entry fee</li>
+                <li>Bring windbreaker for sea breeze</li>
+                <li>Combine with a walk to the fish market</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

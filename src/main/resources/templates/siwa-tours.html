@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siwa — Tours</title>
+    <meta name="description" content="Popular tours in Siwa: Oracle Temple, salt lakes, hot springs, Great Sand Sea safari." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/siwa-city}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Siwa — Popular Tours</h1>
+            <div class="grid grid--cards">
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Oracle Temple"
+                         style="background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Oracle Temple & Shali</h3>
+                        <div class="card__meta">History walk · Oasis views</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Salt lakes"
+                         style="background:url('https://images.unsplash.com/photo-1595514535381-441a6f62a7e2?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Salt Lakes & Springs</h3>
+                        <div class="card__meta">Float & soak · Sunset photo spots</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Great Sand Sea"
+                         style="background:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Great Sand Sea Safari</h3>
+                        <div class="card__meta">4x4 dunes · Camp under stars</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

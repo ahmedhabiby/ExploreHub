@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Dakhla & Kharga — Hotels'">Dakhla & Kharga — Hotels</title>
+    <meta name="description" content="Popular stays in Dakhla & Kharga: oasis guesthouses, heritage lodges, and garden inns." />
+
+    <!-- CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- ===== Header ===== -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/dakhla-kharga}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ===== Main Content ===== -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1 th:text="'Dakhla & Kharga — Popular Hotels'">Dakhla & Kharga — Popular Hotels</h1>
+
+            <div class="grid grid--cards">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Oasis lodge"
+                         th:style="'background:url(' + @{/images/Dakhla-oasis.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="'Oasis Lodge'">Oasis Lodge</h3>
+                        <div class="card__meta" th:text="'Palm gardens · Quiet nights'">Palm gardens · Quiet nights</div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Heritage guesthouse"
+                         th:style="'background:url(' + @{/images/Heritage-guesthouse.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="'Heritage Guesthouse'">Heritage Guesthouse</h3>
+                        <div class="card__meta" th:text="'Mud-brick charm · Local meals'">Mud-brick charm · Local meals</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span></div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

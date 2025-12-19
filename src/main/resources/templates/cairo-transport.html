@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cairo — Transport</title>
+    <meta name="description" content="Cairo transport: CAI airport info, metro, taxis, ride-hailing, and Nile boats." />
+    <!-- ربط ملف الـ CSS باستخدام thymeleaf -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+
+<body>
+<!-- ✅ الهيدر -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cairo}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ المحتوى الرئيسي -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Cairo — Transport</h1>
+            <ul>
+                <li><strong>Flights:</strong> Cairo International (CAI) · frequent global connections</li>
+                <li><strong>Metro:</strong> Lines connecting downtown, Giza, and suburbs</li>
+                <li><strong>City:</strong> Taxis and ride-hailing apps; Nile boats for leisure</li>
+                <li><strong>Day trips:</strong> Private drivers to Saqqara/Memphis/Giza</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ الفوتر -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<!-- ربط ملف الجافاسكربت -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

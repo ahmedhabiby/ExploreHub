@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deserts & Oases — ExploreHub</title>
+    <meta name="description" content="Western Desert and oases: Siwa, Bahariya, Farafra, Dakhla, Kharga; White Desert and starry skies." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/about}">About Egypt</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What's On</a>
+            <a th:href="@{/useful-info}">Useful Information</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Region</span>
+                <h1>Deserts & Oases</h1>
+                <p class="lead">Vast dunes, rock formations, and palm-shaded springs in Egypt’s Western Desert.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="White Desert formations"
+                 th:style="'background:url(' + @{/images/white-desert.jpg} + ') center/cover no-repeat;'"></div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Highlights</h2>
+            <div class="grid grid--cards">
+                <a class="card" th:href="@{/siwa}">
+                    <div class="card__media" role="img" aria-label="Siwa Oasis salt lake"
+                         th:style="'background:url(' + @{/images/siwa-lake.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Siwa Oasis</h3>
+                        <div class="card__meta">Crystal salt pools, the Oracle temple, eco-lodges.</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/white-desert}">
+                    <div class="card__media" role="img" aria-label="White Desert formations"
+                         th:style="'background:url(' + @{/images/white-desert.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">White Desert</h3>
+                        <div class="card__meta">Otherworldly chalk sculptures near Farafra.</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/bahariya}">
+                    <div class="card__media" role="img" aria-label="Black Desert hills"
+                         th:style="'background:url(' + @{/images/Black-Desert-hills.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Bahariya & Black Desert</h3>
+                        <div class="card__meta">Cinder-cone hills, palm groves, hot springs.</div>
+                    </div>
+                </a>
+
+                <a class="card" th:href="@{/dakhla-kharga}">
+                    <div class="card__media" role="img" aria-label="Dakhla oasis village"
+                         th:style="'background:url(' + @{/images/Dakhla-oasis.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Dakhla & Kharga</h3>
+                        <div class="card__meta">Mud-brick hamlets, monasteries, and desert archaeology.</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Activities</h2>
+            <ul>
+                <li>4x4 safaris, overnight camping under the stars</li>
+                <li>Soak in hot springs and salt pools</li>
+                <li>Sandboarding and dune trekking</li>
+                <li>Cultural tours of oasis villages and ancient sites</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Best Time -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Best Time to Visit</h2>
+            <p>October–April for comfortable days and cool nights; summers are very hot.</p>
+        </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Travel Tips</h2>
+            <ul>
+                <li>Travel with licensed desert guides; permits may be required.</li>
+                <li>Bring layers for chilly nights; carry ample water and sun protection.</li>
+                <li>Leave no trace—respect fragile desert ecosystems.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

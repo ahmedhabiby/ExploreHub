@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giza — Museums Guide</title>
+    <meta name="description" content="Giza museums: Grand Egyptian Museum, Khufu's Solar Boat, Pyramids site exhibits." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/giza}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Giza</span>
+                <h1>Museums</h1>
+                <p class="lead">From the Grand Egyptian Museum to treasures by the pyramids.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="GEM"
+                 style="background:url('/images/egyptian-meusium.jpg') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Grand Egyptian Museum"
+                         style="background:url('/images/egyptian-meusium.jpg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Grand Egyptian Museum</h3>
+                        <div class="card__meta">Next to the Pyramids Plateau</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Solar Boat"
+                         style="background:url('/images/solar-boat.jpg') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Khufu’s Solar Boat</h3>
+                        <div class="card__meta">Reassembled boat near the Great Pyramid</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Reserve time slots in advance if required.</li>
+                <li>Combine with Plateau sightseeing in the morning.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="GEM atrium"
+                         style="background:url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Artifacts"
+                         style="background:url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

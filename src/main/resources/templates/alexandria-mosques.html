@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexandria — Historic Mosques Guide</title>
+    <meta name="description"
+          content="Alexandria mosques: Abu al-Abbas al-Mursi, Terbana Mosque, and old quarter landmarks." />
+    <!-- ربط ملف CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <!-- رابط للصفحة الرئيسية -->
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+
+        <nav class="nav__links">
+            <!-- روابط أخرى حسب الـ Controller -->
+            <a th:href="@{/cities}">Cities</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What’s On</a>
+            <a th:href="@{/useful-info}">Useful Info</a>
+        </nav>
+
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Alexandria</span>
+                <h1>Historic Mosques</h1>
+                <p class="lead">Seafront domes and old-quarter minarets.</p>
+            </div>
+
+            <!-- صورة الخلفية -->
+            <div class="hero__media" role="img" aria-label="Alexandria mosque"
+                 th:style="'background:url(' + @{/images/2022_7_20_23_16_9_143.jpeg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <ul>
+                <li>Abu al-Abbas al-Mursi Mosque</li>
+                <li>Terbana Mosque</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Etiquette & Tips</h2>
+            <ul>
+                <li>Dress modestly; remove shoes where required</li>
+                <li>Visit outside prayer times for interiors</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- ربط ملف JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh City Guide — ExploreHub</title>
+    <meta name="description" content="Sharm El-Sheikh city guide: museums, historic mosques, Old Sharm, seafront walks, food & cafes." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Sharm El-Sheikh</h1>
+                <p class="lead">Red Sea hub for reefs, bays, promenades, and lively evenings.</p>
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip"><a th:href="@{/sharm-museums}" style="color:inherit">Museums</a></span>
+                    <span class="chip"><a th:href="@{/sharm-mosques}" style="color:inherit">Historic Mosques</a></span>
+                    <span class="chip"><a th:href="@{/sharm-old}" style="color:inherit">Old Sharm</a></span>
+                    <span class="chip"><a th:href="@{/sharm-nile}" style="color:inherit">Nile Views</a></span>
+                    <span class="chip"><a th:href="@{/sharm-food}" style="color:inherit">Food & Cafes</a></span>
+                </div>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Sharm bay"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- MUSEUMS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul><li>Sharm Museum — history and artifacts</li></ul>
+        </div>
+    </section>
+
+    <!-- MOSQUES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul><li>Al-Sahaba Mosque in Old Market</li></ul>
+        </div>
+    </section>
+
+    <!-- OLD SHARM -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Sharm</h2>
+            <ul>
+                <li>Old Market bazaar and cafes</li>
+                <li>Naama Bay promenade</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- NILE VIEWS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Seafront walks at Naama Bay and Shark’s Bay</li>
+                <li>Sunset piers and marinas</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOD -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food & Cafes</h2>
+            <ul>
+                <li>Sea-view dining along the promenades</li>
+                <li>International cafes and dessert spots</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

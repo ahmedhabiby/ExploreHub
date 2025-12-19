@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh — Seafront Views Guide</title>
+    <meta name="description" content="Sharm seafront: Naama Bay, Shark’s Bay, marinas, and sunset piers." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/sharm-city}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Sharm El-Sheikh</span>
+                <h1>Seafront Views</h1>
+                <p class="lead">Promenades, piers, and bays with turquoise water.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Naama Bay"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- BEST SPOTS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Best Spots</h2>
+            <ul>
+                <li>Naama Bay promenade</li>
+                <li>Shark’s Bay seafront</li>
+                <li>Marinas and sunset piers</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

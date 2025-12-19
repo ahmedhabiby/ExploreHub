@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ExploreHub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- Local CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet"/>
+
+    <meta name="description"
+
+          content="Plan your trip to Egypt: destinations on the Nile, Red Sea and Mediterranean; ancient sites; museums; festivals; travel tips and more."/>
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 0;
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+
+    <div class="container nav">
+        <a th:href="@{/}" class="brand" aria-label="Egypt Explorer home">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+
+
+        </a>
+        <span class="brand" sec:authentication="principal.username"></span>
+
+        <nav class="nav__links" aria-label="Primary">
+            <a th:href="@{/about}">About Egypt</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What's On</a>
+            <a th:href="@{/useful-info}">Useful Information</a>
+            <div class="dropdown">
+                <button>Menu</button>
+                <div class="dropdown-content">
+                    <a th:href="@{/ratings}">Rating</a>
+                    <a th:href="@{/manageUsers}">Users</a>
+                    <a th:href="@{/updateUser}">Update User</a>
+                </div>
+            </div>
+            <a href="http://127.0.0.1:5000/">ChatWithUs</a>
+
+
+
+        </nav>
+
+        <div class="nav__actions">
+            <!-- زرار القائمة للموبايل -->
+            <button class="button button--ghost menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+
+            <!-- زر الاشتراك -->
+            <a class="button" href="#newsletter">Subscribe</a>
+
+            <!-- اسم المستخدم الحالي -->
+
+            <!-- تسجيل خروج -->
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="button button--ghost" style="margin-left:10px;">Logout</button>
+            </form>
+        </div>
+    </div>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">The land where it all begins</span>
+                <h1>Discover Egypt's timeless wonders</h1>
+                <p class="lead">
+                    Cruise the Nile, dive the Red Sea, wander ancient temples, and explore desert oases.
+                    Start planning an unforgettable journey filled with heritage, nature, and culture.
+                </p>
+                <div class="nav__actions">
+                    <a class="button" th:href="@{/where-to-go}">Find Destinations</a>
+                    <a class="button button--ghost" th:href="@{/what-to-do}">Explore Experiences</a>
+                    <a class="button button--ghost" th:href="@{/cities}">Explore Cities</a>
+                </div>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Pyramids of Giza at sunset"
+                 th:style="'background:url(' + @{/images/2022_10_2_19_12_0_904.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- WHERE TO GO -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Where to Go</h2>
+                <a class="button button--ghost" th:href="@{/where-to-go}">View all</a>
+            </div>
+            <p class="lead">Pick your destination and start your Egypt experience now.</p>
+            <div class="grid grid--cards">
+                <a class="card" th:href="@{/nile}">
+                    <div class="card__media" role="img" aria-label="Sailing boat on the Nile"
+                         th:style="'background:url(' + @{/images/2022_8_7_18_24_45_511.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Nile</h3>
+                        <div class="card__meta">Cruises, temples, and timeless river scenery</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/red-sea}">
+                    <div class="card__media" role="img" aria-label="Red Sea coral reef"
+                         th:style="'background:url(' + @{/images/2022_8_7_18_27_31_403.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Red Sea</h3>
+                        <div class="card__meta">World-class diving, snorkeling, and sun-soaked beaches</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/med}">
+                    <div class="card__media" role="img" aria-label="Alexandria Mediterranean coast"
+                         th:style="'background:url(' + @{/images/2022_10_3_13_20_11_515.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">The Med</h3>
+                        <div class="card__meta">Coastal heritage, promenades, and breezy shores</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/deserts}">
+                    <div class="card__media" role="img" aria-label="Desert dunes and oasis"
+                         th:style="'background:url(' + @{/images/2022_8_7_18_29_43_278.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Deserts & Oases</h3>
+                        <div class="card__meta">Golden dunes, starry skies, and serene palm groves</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GRAND EGYPTIAN MUSEUM -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Grand Egyptian Museum</h2>
+                <div class="countdown" aria-label="Opening countdown">
+                    <span class="countdown__unit"><strong data-count="days">00</strong> d</span>
+                    <span class="countdown__unit"><strong data-count="hours">00</strong> h</span>
+                    <span class="countdown__unit"><strong data-count="minutes">00</strong> m</span>
+                    <span class="countdown__unit"><strong data-count="seconds">00</strong> s</span>
+                </div>
+            </div>
+            <div class="bento">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Museum atrium render"
+                         th:style="'min-height:240px; background:url(' + @{/images/2022_7_20_23_49_37_505.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Stay tuned for the grand opening</h3>
+                        <div class="card__meta">A landmark celebrating Egypt's heritage</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Sailing on the Nile"
+                         th:style="'background:url(' + @{/images/2022_8_7_18_6_10_825.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Sail to Egypt</h3>
+                        <div class="card__meta">Plan your cruise and sailing adventure</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT TO DO -->
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">What to Do</h2>
+                <a class="button button--ghost" th:href="@{/what-to-do}">View all</a>
+            </div>
+            <p class="lead">Experiences across nature, history, and culture.</p>
+            <div class="grid grid--cards">
+                <a class="card" th:href="@{/sun-sea}">
+                    <div class="card__media" role="img" aria-label="Beach and clear water"
+                         th:style="'background:url(' + @{/images/2022_8_7_17_54_18_456.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Sun & Sea</h3>
+                        <div class="card__meta">Resorts, snorkeling, kitesurfing</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/archaeological-sites}">
+                    <div class="card__media" role="img" aria-label="Ancient temple columns"
+                         th:style="'background:url(' + @{/images/2022_8_7_14_50_5_786.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Archaeological Sites</h3>
+                        <div class="card__meta">Pyramids, Luxor, Abu Simbel</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/adventure-outdoor}">
+                    <div class="card__media" role="img" aria-label="Desert safari"
+                         th:style="'background:url(' + @{/images/2022_8_9_4_36_46_299.jpeg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Adventure & Outdoor</h3>
+                        <div class="card__meta">Hiking, dunes, oases</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/arts-culture}">
+                    <div class="card__media" role="img" aria-label="Cultural performance stage"
+                         th:style="'background:url(' + @{/images/2022_8_11_17_0_32_232.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Arts & Culture</h3>
+                        <div class="card__meta">Galleries, festivals</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER --> <section id="newsletter" class="section">
+    <div class="container"> <div class="section__header">
+        <h2 class="section__title">Subscribe to our newsletter</h2>
+    </div> <form class="card" style="padding:12px; display:grid; gap:12px;" th:action="@{/saveSubscriber}" method="post" aria-label="Newsletter signup"> <label style="display:none" for="email">Email</label> <input id="email" name="email" type="email" placeholder="Your email" required style="padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:#fff;"/>
+    <button class="button" type="submit">Subscribe</button> </form> </div> </section> </main>
+
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="container footer__grid">
+        <div class="footer__group">
+            <h4>Popular links</h4>
+            <a th:href="@{/about}">About Egypt</a><br/>
+            <a th:href="@{/where-to-go}">Where to go</a><br/>
+            <a th:href="@{/what-to-do}">What to do</a><br/>
+            <a th:href="@{/whats-on}">What's on</a>
+        </div>
+        <div class="footer__group">
+            <h4>Helpful information</h4>
+            <a th:href="@{/useful-info}">Plan Your Trip</a><br/>
+            <a th:href="@{/useful-info}">Visa guide</a><br/>
+            <a th:href="@{/useful-info}">Travel Safe</a>
+        </div>
+        <div class="footer__group">
+            <h4>Related sites</h4>
+            <a href="#">Grand Egyptian Museum</a><br/>
+            <a href="#">NMEC</a><br/>
+            <a href="#">Museum of Islamic Art</a>
+        </div>
+        <div class="footer__group">
+            <h4>Follow us</h4>
+            <a href="#">Facebook</a><br/>
+            <a href="#">Instagram</a><br/>
+            <a href="#">YouTube</a>
+        </div>
+    </div>
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+
+</body>
+</html>

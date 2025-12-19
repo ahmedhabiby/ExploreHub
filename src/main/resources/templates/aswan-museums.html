@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aswan — Museums Guide</title>
+    <meta name="description" content="Aswan museums: Nubian Museum and Aswan Museum highlights, tips, and gallery." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Aswan</span>
+                <h1>Museums</h1>
+                <p class="lead">Artifacts and heritage from Nubia and Aswan.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Nubian Museum"
+                 th:style="'background:url(' + @{/images/nubian-meusium.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <div class="grid grid--cards">
+
+                <!-- Nubian Museum -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Nubian Museum"
+                         th:style="'background:url(' + @{/images/nubian-meusium2.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Nubian Museum</h3>
+                        <div class="card__meta">Culture and history of Nubia</div>
+                    </div>
+                </article>
+
+                <!-- Aswan Museum -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Aswan Museum"
+                         th:style="'background:url(' + @{/images/aswan-musium.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Aswan Museum</h3>
+                        <div class="card__meta">Artifacts from local excavations</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Pair museum visits with Philae or felucca rides</li>
+                <li>Check hours; summer heat suggests early starts</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

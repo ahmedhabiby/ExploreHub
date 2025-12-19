@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexandria — Seafront Views Guide</title>
+    <meta name="description" content="Alexandria seafront: corniche promenades, Stanley Bridge, Montaza viewpoints." />
+    <!-- CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <!-- اللوجو بيرجع للـ Cities -->
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What’s On</a>
+            <a th:href="@{/useful-info}">Useful Info</a>
+        </nav>
+
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Alexandria</span>
+                <h1>Seafront Views</h1>
+                <p class="lead">Mediterranean breezes and golden-hour strolls along the corniche.</p>
+            </div>
+
+            <!-- الصورة كـ background -->
+            <div class="hero__media" role="img" aria-label="Corniche"
+                 th:style="'background:url(' + @{/images/2022_9_29_16_58_8_782.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Spots -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Best Spots</h2>
+            <ul>
+                <li>Stanley Bridge</li>
+                <li>Citadel harbor walls</li>
+                <li>Montaza Gardens seafront</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

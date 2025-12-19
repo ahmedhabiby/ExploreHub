@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cairo — Historic Mosques Guide</title>
+    <meta name="description" content="Cairo historic mosques: Citadel, Sultan Hassan, Al-Rifa'i, Ibn Tulun, Al-Azhar, and more." />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        .heart-btn {
+            border: none;
+            background: none;
+            color: #e63946;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .heart-btn:hover { transform: scale(1.2); }
+
+        .star-rating button {
+            border: none;
+            background: none;
+            font-size: 1.5em;
+            color: #f4c150;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .star-rating button:hover { transform: scale(1.2); }
+    </style>
+</head>
+
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cairo}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Cairo</span>
+                <h1>Historic Mosques</h1>
+                <p class="lead">Masterpieces of Islamic architecture across Cairo’s citadel and old quarters.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Citadel mosque"
+                 th:style="'background:url(' + @{/images/citadel-mosque.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Alert Messages -->
+    <div class="container" style="padding-top: 20px;">
+        <div th:if="${successMessage}" class="alert alert-success" role="alert"
+             style="padding: 15px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px; margin-bottom: 20px;">
+            <p th:text="${successMessage}"></p>
+        </div>
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert"
+             style="padding: 15px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 4px; margin-bottom: 20px;">
+            <p th:text="${errorMessage}"></p>
+        </div>
+    </div>
+
+    <!-- Featured Mosques -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured Mosques</h2>
+
+            <div class="grid grid--cards">
+                <article class="card" th:each="mosque : ${cairoList}" th:if="${mosque != null}">
+                    <div class="card__media"
+                         role="img"
+                         th:aria-label="${mosque.title}"
+                         th:style="'background:url(' + ${mosque.imageUrl} + ') center/cover no-repeat;'">
+                    </div>
+
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="${mosque.title}"></h3>
+                        <div class="card__meta" th:text="${mosque.metaData}"></div>
+
+                        <!-- Favorite Button -->
+                        <div th:if="${user != null}">
+                            <form th:action="@{'/add/' + ${user.username} + '/' + ${mosque.id}}" method="post" style="display:inline;">
+                                <button type="submit" class="heart-btn" aria-label="Add to favorites">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div th:if="${user == null}">
+                            <a th:href="@{/login}" class="heart-btn" aria-label="Login to add favorites">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        </div>
+
+                        <div class="star-rating" th:if="${user != null}">
+                            <span>Rate: </span>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-mosque="${mosque.id}"
+                                    data-value="1" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-mosque="${mosque.id}"
+                                    data-value="2" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-mosque="${mosque.id}"
+                                    data-value="3" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-mosque="${mosque.id}"
+                                    data-value="4" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-mosque="${mosque.id}"
+                                    data-value="5" onclick="submitRating(this)">☆</button>
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Etiquette & Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Etiquette & Tips</h2>
+            <ul>
+                <li>Dress modestly; some sites provide covers.</li>
+                <li>Remove shoes or use provided covers when required.</li>
+                <li>Visiting hours may vary during prayer times.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Courtyards"
+                         th:style="'background:url(' + @{/images/Courtyards.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Minarets"
+                         th:style="'background:url(' + @{/images/Minarets.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Prayer halls"
+                         th:style="'background:url(' + @{/images/Prayer-halls.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+<script>
+    function submitRating(button) {
+        const username = button.getAttribute('data-username');
+        const mosqueID = button.getAttribute('data-mosque');
+        const ratingValue = button.getAttribute('data-value');
+
+        const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
+        fetch('/rate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                [csrfHeader]: csrfToken
+            },
+            body: `username=${encodeURIComponent(username)}&mosqueID=${encodeURIComponent(mosqueID)}&ratingValue=${encodeURIComponent(ratingValue)}`
+        })
+            .then(response => {
+                if(response.ok) {
+                    alert('Rating saved!');
+                } else {
+                    alert('you are rate once');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>

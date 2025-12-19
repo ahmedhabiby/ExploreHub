@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edfu & Kom Ombo — The Nile</title>
+    <meta name="description" content="Visit Edfu's Temple of Horus and the unique double temple of Kom Ombo on the Nile." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/nile}">Back to The Nile</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Nile</span>
+                <h1>Edfu & Kom Ombo</h1>
+                <p class="lead">Two riverside temples: Edfu, Egypt's best-preserved, and Kom Ombo, dedicated to Sobek and Horus.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Temple columns"
+                 th:style="'background:url(' + @{/images/kom-ombo-riverside.jpg} + ') center/cover no-repeat;'"></div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>Edfu’s reliefs and towering pylons offer a cinematic look at Ptolemaic temple architecture, while Kom Ombo’s riverside setting is perfect at sunset.</p>
+        </div>
+    </section>
+
+    <!-- Things to See -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Things to See</h2>
+            <ul>
+                <li>Sanctuary and mammisi at Edfu</li>
+                <li>Crocodile Museum at Kom Ombo</li>
+                <li>Nile views from temple terraces</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Edfu pylon"
+                         th:style="'background:url(' + @{/images/edfu-paylon.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Reliefs"
+                         th:style="'background:url(' + @{/images/edfu-reliefs.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Kom Ombo riverside"
+                         th:style="'background:url(' + @{/images/kom-ombo-riverside.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Horus statue"
+                         th:style="'background:url(' + @{/images/horus-statue.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Temple reliefs"
+                         th:style="'background:url(' + @{/images/temple-reliefs.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Courtyard"
+                         th:style="'background:url(' + @{/images/Courtyards.jpg} + ') center/cover no-repeat;'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Guides -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Ptolemaic art"
+                         th:style="'background:url(' + @{/images/ptolemaic-art.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Reading Ptolemaic Reliefs</h3>
+                        <div class="card__meta">Spot the stylistic clues that distinguish Edfu's art.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Sunset"
+                         th:style="'background:url(' + @{/images/sunset.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Kom Ombo at Sunset</h3>
+                        <div class="card__meta">Timing your visit for golden light over the river.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Museum"
+                         th:style="'background:url(' + @{/images/coptic-musieum.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Crocodile Museum</h3>
+                        <div class="card__meta">Inside the mummified crocodiles and Sobek worship.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Arrive early to avoid heat on open courtyards.</li>
+                <li>Felucca or cruise stop logistics vary—confirm docking times.</li>
+                <li>Carry small bills for site transport if needed.</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

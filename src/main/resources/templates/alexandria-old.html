@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexandria — Old Alexandria Guide</title>
+    <meta name="description" content="Old Alexandria: Citadel of Qaitbay, harbor lanes, old cafes and markets off the corniche." />
+    <!-- ربط CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Alexandria</span>
+                <h1>Old Alexandria</h1>
+                <p class="lead">Harbor fortresses, historic lanes, and timeless cafes.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Citadel of Qaitbay"
+                 th:style="'background:url(' + @{/images/citadel\ of\ qaitbay.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Routes</h2>
+            <ul>
+                <li>Citadel of Qaitbay → harbor lanes → fish market</li>
+                <li>Corniche coffeehouses and old cafes</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Sunset on the corniche is prime time</li>
+                <li>Bring a light jacket for sea breeze</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

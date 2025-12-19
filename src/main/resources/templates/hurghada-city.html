@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hurghada City Guide — ExploreHub</title>
+    <meta name="description" content="Hurghada city guide: museums, historic mosques, Old Hurghada, seafront views, food & cafes." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Hurghada</h1>
+                <p class="lead">Resort city with marinas, house reefs, and family‑friendly shores.</p>
+
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip"><a th:href="@{/hurghada-museums}" style="color:inherit">Museums</a></span>
+                    <span class="chip"><a th:href="@{/hurghada-mosques}" style="color:inherit">Historic Mosques</a></span>
+                    <span class="chip"><a th:href="@{/hurghada-old}" style="color:inherit">Old Hurghada</a></span>
+                    <span class="chip"><a th:href="@{/hurghada-nile}" style="color:inherit">Nile Views</a></span>
+                    <span class="chip"><a th:href="@{/hurghada-food}" style="color:inherit">Food & Cafes</a></span>
+                </div>
+            </div>
+
+            <div class="hero__media" role="img" aria-label="Hurghada marina"
+                 th:style="'background:url(' + @{/images/hurgada.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Museums Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul>
+                <li>Hurghada Museum: artifacts and regional history</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Historic Mosques -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>El Mina Masjid by the marina</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Old Hurghada -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Hurghada</h2>
+            <ul>
+                <li>El Dahar district: markets and local eateries</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Nile Views -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Seafront promenades and marina sunsets</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Food & Cafes -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food & Cafes</h2>
+            <ul>
+                <li>Marina restaurants and seaside cafes</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

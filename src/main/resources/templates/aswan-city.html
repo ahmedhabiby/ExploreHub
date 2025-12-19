@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aswan City Guide — Egypt Explorer</title>
+    <meta name="description" content="Aswan city guide: museums, historic mosques, Old Aswan, Nile views, food & cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Aswan</h1>
+                <p class="lead">Nubian culture, islands, and tranquil Nile scenes at Egypt’s southern gateway.</p>
+
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip"><a th:href="@{/aswan-museums}" style="color:inherit">Museums</a></span>
+                    <span class="chip"><a th:href="@{/aswan-mosques}" style="color:inherit">Historic Mosques</a></span>
+                    <span class="chip"><a th:href="@{/aswan-old}" style="color:inherit">Old Aswan</a></span>
+                    <span class="chip"><a th:href="@{/aswan-nile}" style="color:inherit">Nile Views</a></span>
+                    <span class="chip"><a th:href="@{/aswan-food}" style="color:inherit">Food &amp; Cafes</a></span>
+                </div>
+            </div>
+
+            <div class="hero__media" role="img" aria-label="Aswan islands"
+                 th:style="'background:url(' + @{/images/2022_8_7_18_24_45_511.jpeg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Museums -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Nubian Museum"
+                         th:style="'background:url(' + @{/images/2022_7_20_23_50_45_837.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Nubian Museum</h3>
+                        <div class="card__meta">Artifacts and culture from Nubia</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Aswan Museum"
+                         th:style="'background:url(' + @{/images/2022_7_21_0_27_32_165.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Aswan Museum</h3>
+                        <div class="card__meta">Artifacts from local excavations</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historic Mosques -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>El-Tabia Mosque hill viewpoint</li>
+                <li>Neighborhood mosques around the souq</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Old Aswan -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Aswan</h2>
+            <ul>
+                <li>Souq lanes and spice markets</li>
+                <li>Felucca docks and boat yards</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Nile Views -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Sunset felucca sails</li>
+                <li>Botanical Island and cataract vistas</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Food & Cafes -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food &amp; Cafes</h2>
+            <ul>
+                <li>Nubian dishes and riverside grills</li>
+                <li>Cafes on the corniche</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

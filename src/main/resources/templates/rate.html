@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #74ebd5;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+
+<h2>All Ratings</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Mosque</th>
+        <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rating : ${ratings}">
+        <td th:text="${rating.user.username}"></td>
+        <td th:text="${rating.cairoMosques.title}"></td>
+        <td th:text="${rating.ratingValue}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(ratings)}">
+        <td colspan="3" style="text-align:center;">No ratings found</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Average Ratings per Mosque</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Mosque</th>
+        <th>Average Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${averageRatings}">
+        <td th:text="${r[1]}"></td>
+        <td th:text="${#numbers.formatDecimal(r[2], 1, 2)}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(averageRatings)}">
+        <td colspan="2" style="text-align:center;">No ratings available</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

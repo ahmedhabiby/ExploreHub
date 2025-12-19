@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luxor — Food & Cafes Guide</title>
+    <meta name="description" content="Luxor food: riverside restaurants, souq eateries, and traditional dishes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/luxor-city}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Luxor</span>
+                <h1>Food & Cafes</h1>
+                <p class="lead">Dine along the corniche or tuck into local souq favorites.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Luxor food"
+                 th:style="|background:url('/images/2022_7_7_17_6_55_933.png') center/cover no-repeat;|"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">What to Try</h2>
+            <ul>
+                <li>Grilled meats, koshary, taameya</li>
+                <li>Fresh juices and Nile‑view tea</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Riverside dining"
+                         th:style="|background:url('/images/nile-river-1536x1021nile-river-1536x1021.jpg') center/cover no-repeat;|"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Cafe"
+                         th:style="|background:url('/images/2022_7_7_17_7_43_519.png') center/cover no-repeat;|"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

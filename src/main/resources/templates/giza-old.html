@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giza — Old Giza Guide</title>
+    <meta name="description" content="Old Giza: Pyramids Plateau routes, viewpoints, and local souqs." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/giza}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Giza</span>
+                <h1>Old Giza</h1>
+                <p class="lead">Walk the Plateau: pyramids, Sphinx, and panoramic dunes.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Pyramids"
+                 style="background:url('/images/pyramids-g90557d355_1280-750x430pyramids-g90557d355_1280-750x430.jpg') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Routes</h2>
+            <ul>
+                <li>Great Pyramid → Khafre → Menkaure → Sphinx</li>
+                <li>Panorama point by camel stands</li>
+                <li>Optional: Saqqara & Memphis day trip</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Arrive at opening time for cooler temps</li>
+                <li>Hire licensed guides; agree on rates beforehand</li>
+                <li>Carry water and sun protection</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

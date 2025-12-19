@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Dahab — Tours'">Dahab — Tours</title>
+    <meta name="description" content="Popular tours in Dahab: Blue Hole, Blue Lagoon kitesurf, Abu Galum boat, canyon hikes." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/dahab}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main Section -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Dahab — Popular Tours</h1>
+            <div class="grid grid--cards">
+
+                <!-- Tour 1 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Blue Hole"
+                         th:style="'background:url(' + @{/images/blue-hole.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Blue Hole Snorkel/Dive</h3>
+                        <div class="card__meta">Guided shore entry · Safety briefing</div>
+                    </div>
+                </article>
+
+                <!-- Tour 2 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Blue Lagoon"
+                         th:style="'background:url(' + @{/images/blue-lagoon.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Blue Lagoon Kitesurf</h3>
+                        <div class="card__meta">Lessons · Gear rental</div>
+                    </div>
+                </article>
+
+                <!-- Tour 3 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Abu Galum"
+                         th:style="'background:url(' + @{/images/abu-galum.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Abu Galum Boat/Jeep</h3>
+                        <div class="card__meta">Snorkel coves · Bedouin lunch</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

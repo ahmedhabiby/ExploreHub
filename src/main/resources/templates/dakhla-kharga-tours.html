@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Dakhla & Kharga — Tours'">Dakhla & Kharga — Tours</title>
+    <meta name="description" content="Popular tours in Dakhla & Kharga: Al-Qasr village walks, monastery visits, desert drives." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/dakhla-kharga}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ===== Main Section ===== -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1 th:text="'Dakhla & Kharga — Popular Tours'">Dakhla & Kharga — Popular Tours</h1>
+            <div class="grid grid--cards">
+
+                <!-- Tour 1 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Al-Qasr"
+                         th:style="'background:url(' + @{/images/Al-Qasr-Village-Walk.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="'Al-Qasr Village Walk'">Al-Qasr Village Walk</h3>
+                        <div class="card__meta" th:text="'Mud-brick lanes · Heritage houses'">Mud-brick lanes · Heritage houses</div>
+                    </div>
+                </article>
+
+                <!-- Tour 2 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Monasteries"
+                         th:style="'background:url(' + @{/images/Desert-Monasteries.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="'Desert Monasteries'">Desert Monasteries</h3>
+                        <div class="card__meta" th:text="'Early Christian heritage sites'">Early Christian heritage sites</div>
+                    </div>
+                </article>
+
+                <!-- Tour 3 -->
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Desert drive"
+                         th:style="'background:url(' + @{/images/Desert-Drives.jpg} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="'Desert Drives'">Desert Drives</h3>
+                        <div class="card__meta" th:text="'Oasis viewpoints · Dune routes'">Oasis viewpoints · Dune routes</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>
+            ALL RIGHTS RESERVED© <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}"></span>
+        </div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

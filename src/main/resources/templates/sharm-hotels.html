@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh — Hotels</title>
+    <meta name="description"
+          content="Most popular hotels in Sharm El-Sheikh: bayside resorts, family stays, and dive hotels." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/sharm-city}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Sharm — Popular Hotels</h1>
+
+            <div class="grid grid--cards">
+
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Naama Bay resort"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1519821172141-b5d8a4d7f1e7?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Naama Bay Resort</h3>
+                        <div class="card__meta">Promenade access · Family friendly</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Shark’s Bay hotel"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Shark’s Bay Hotel</h3>
+                        <div class="card__meta">House reef · Dive center</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Old Market area stay"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Old Market Boutique</h3>
+                        <div class="card__meta">Bazaar access · Local cafes</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dakhla & Kharga City Guide — Egypt Explorer</title>
+    <meta name="description" content="Dakhla and Kharga city guide: museums, historic mosques, old quarters, oasis views, food & cafes." />
+
+    <!-- استخدمي th:href بدلاً من المسار الثابت -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <!-- رابط الصفحة الرئيسية -->
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+
+        <!-- رابط العودة إلى المدن -->
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Dakhla &amp; Kharga</h1>
+                <p class="lead">
+                    Historic oases with mud-brick hamlets, monasteries, and serene vistas.
+                </p>
+
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip">Museums</span>
+                    <span class="chip">Historic Mosques</span>
+                    <span class="chip">Old Quarters</span>
+                    <span class="chip">Nile Views</span>
+                    <span class="chip">Food &amp; Cafes</span>
+                </div>
+            </div>
+
+            <!-- الصورة -->
+            <div class="hero__media" role="img"
+                 aria-label="Dakhla oasis"
+                 th:style="'background:url(' + @{/images/Dakhla-oasis.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul>
+                <li>Local heritage displays and archaeological sites</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>Village mosques in Dakhla and Kharga centers</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Quarters</h2>
+            <ul>
+                <li>Al-Qasr (Dakhla) mud-brick town</li>
+                <li>Ancient remains and monasteries near Kharga</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Oasis gardens, dunes, and starry skies</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food &amp; Cafes</h2>
+            <ul>
+                <li>Local date desserts, oasis teas, and simple grills</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexandria — Food & Cafes Guide</title>
+    <meta name="description" content="Alexandria food: seafood restaurants by the harbor and historic cafes along the corniche." />
+    <!-- ربط ملفات CSS -->
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <!-- رابط للصفحة الرئيسية -->
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <!-- روابط أخرى تتحكم بها الـ controller -->
+            <a th:href="@{/cities}">Cities</a>
+            <a th:href="@{/about}">About</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What’s On</a>
+            <a th:href="@{/useful-info}">Useful Info</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Alexandria</span>
+                <h1>Food & Cafes</h1>
+                <p class="lead">Sea-to-table restaurants and timeless Mediterranean cafes.</p>
+            </div>
+            <!-- الصورة كخلفية -->
+            <div class="hero__media" role="img" aria-label="Seafood"
+                 th:style="'background:url(' + @{/images/975af4f2e5da918b545c59c87f914b44_w750_h500.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">What to Try</h2>
+            <ul>
+                <li>Fresh fish and seafood platters</li>
+                <li>Alexandrian feteer and sweets</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- ربط ملفات JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

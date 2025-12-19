@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Archaeological Sites — What to Do</title>
+    <meta name="description" content="Pyramids, temples, tombs, and museums across Egypt: plan your archaeology journey." />
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/what-to-do}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/where-to-go}">Where to Go</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">What to Do</span>
+                <h1>Archaeological Sites</h1>
+                <p class="lead">Walk among pyramids, temples, and royal tombs from Cairo to Aswan.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Ancient columns"
+                 th:style="'background:url(' + @{/images/2022_8_8_20_20_43_310.jpeg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Experiences -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Giza Pyramids &amp; Sphinx · Saqqara &amp; Memphis</li>
+                <li>Luxor: Karnak, Luxor Temple, Valley of the Kings/Queens</li>
+                <li>Aswan: Philae; Abu Simbel day trip</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Best Destinations -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Best Destinations</h2>
+            <div class="grid grid--cards">
+                <a class="card" th:href="@{/giza}">
+                    <div class="card__body">
+                        <h3 class="card__title">Giza &amp; Saqqara</h3>
+                        <div class="card__meta">Old Kingdom marvels</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/luxor-city}">
+                    <div class="card__body">
+                        <h3 class="card__title">Luxor</h3>
+                        <div class="card__meta">Open-air museum</div>
+                    </div>
+                </a>
+                <a class="card" th:href="@{/aswan-city}">
+                    <div class="card__body">
+                        <h3 class="card__title">Aswan &amp; Abu Simbel</h3>
+                        <div class="card__meta">Temples on islands &amp; Lake Nasser</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Start early; bring water, hat, sunscreen</li>
+                <li>Hire licensed guides at major sites</li>
+                <li>Check photography rules inside tombs</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<!-- JS -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

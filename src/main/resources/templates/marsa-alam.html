@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marsa Alam — The Red Sea</title>
+    <meta name="description" content="Marsa Alam: pristine reefs, dugong and turtle encounters, relaxed resorts." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/red-sea}">Back to The Red Sea</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Red Sea</span>
+                <h1>Marsa Alam</h1>
+                <p class="lead">A quieter stretch of coast with excellent reefs and marine encounters.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Marsa Alam reef"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>Marsa Alam offers pristine reefs with fewer crowds. Dugongs and turtles frequent seagrass meadows at select bays.</p>
+        </div>
+    </section>
+
+    <!-- TOP EXPERIENCES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Snorkel at Abu Dabbab and Sataya</li>
+                <li>Boat dives at Elphinstone</li>
+                <li>Stargazing on quiet beaches</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Abu Dabbab"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1605369730566-69b3e0f3893c?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Sea turtle"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Elphinstone"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Dugong"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1526401485004-2fda9f4b2c15?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Spotting Dugongs</h3>
+                        <div class="card__meta">Where and how to responsibly observe sea cows.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Reef safety"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1523875194681-bedd468c58bf?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Reef Etiquette</h3>
+                        <div class="card__meta">Protecting corals during snorkels and dives.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRACTICAL INFO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Best seasons: spring and autumn</li>
+                <li>Some bays require guides; check local rules</li>
+                <li>Bring a rash guard and reef booties</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

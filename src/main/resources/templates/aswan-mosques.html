@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aswan — Historic Mosques Guide</title>
+    <meta name="description" content="Aswan mosques: El-Tabia Mosque viewpoint and neighborhood mosques near the souq." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Aswan</span>
+                <h1>Historic Mosques</h1>
+                <p class="lead">Mosques perched above the Nile and within the old town.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="El-Tabia Mosque"
+                 th:style="'background:url(' + @{/images/aswan-mosque.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <ul>
+                <li>El-Tabia Mosque hill viewpoint</li>
+                <li>Neighborhood mosques around the souq</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Etiquette & Tips</h2>
+            <ul>
+                <li>Modest attire; ask before photographing people</li>
+                <li>Visit outside prayer times for interior views</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

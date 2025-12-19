@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dahab City Guide — Egypt Explorer</title>
+    <meta name="description" content="Dahab city guide: museums, historic mosques, Old Dahab, seafront views, food & cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main Content -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Dahab</h1>
+                <p class="lead">Laid-back waterfront town famed for the Blue Hole and windsports.</p>
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip">Museums</span>
+                    <span class="chip">Historic Mosques</span>
+                    <span class="chip">Old Dahab</span>
+                    <span class="chip">Nile Views</span>
+                    <span class="chip">Food & Cafes</span>
+                </div>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Dahab waterfront"
+                 style="background:url('/images/Dahab-waterfront.jpg') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul><li>Local galleries and cultural spaces</li></ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul><li>Neighborhood mosques along the promenade</li></ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Dahab</h2>
+            <ul><li>Masbat and Mashraba: cafes and dive shops</li></ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul><li>Seafront sunsets and lighthouse point</li></ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food & Cafes</h2>
+            <ul><li>Waterfront restaurants and Bedouin dinners</li></ul>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bahariya & Black Desert — Deserts & Oases</title>
+    <meta name="description" content="Bahariya Oasis and the Black Desert: volcanic hills, palm groves, and hot springs in Egypt's Western Desert." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/deserts}">Back to Deserts & Oases</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — Deserts &amp; Oases</span>
+                <h1>Bahariya &amp; Black Desert</h1>
+                <p class="lead">Palm-shaded oasis and dark volcanic hills en route to the White Desert.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Black Desert hills"
+                 style="background:url(@{/images/Black-Desert-hills.jpg}) center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>
+                Bahariya is a launchpad for desert safaris, with palm groves, hot springs,
+                and the nearby Black Desert cinder-cone hills.
+            </p>
+        </div>
+    </section>
+
+    <!-- Top Experiences -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Soak in oasis hot springs</li>
+                <li>Drive over Black Desert hills and viewpoints</li>
+                <li>Combine with White Desert camping circuits</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media" style="background:url(@{/images/palm-oasis.jpg}) center/cover no-repeat;" role="img" aria-label="Palm oasis"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" style="background:url(@{/images/palm-sunday.jpg}) center/cover no-repeat;" role="img" aria-label="Black Desert hills"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" style="background:url(@{/images/2022_7_21_0_51_42_59.jpg}) center/cover no-repeat;" role="img" aria-label="Hot spring"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Guides -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles &amp; Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" style="background:url(@{/images/2022_7_23_21_10_15_725.jpeg}) center/cover no-repeat;" role="img" aria-label="Itinerary"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">2-Day Desert Circuit</h3>
+                        <div class="card__meta">Bahariya to White Desert highlights with camping.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media" style="background:url(@{/images/2022_7_23_21_11_25_787.jpeg}) center/cover no-repeat;" role="img" aria-label="Wellness"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Hot Springs &amp; Relaxation</h3>
+                        <div class="card__meta">Unwinding after desert drives.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>4x4 vehicles and experienced drivers essential</li>
+                <li>Carry plenty of water; fuel up early</li>
+                <li>Respect protected areas and Bedouin customs</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

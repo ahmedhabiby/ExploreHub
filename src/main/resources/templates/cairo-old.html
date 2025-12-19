@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Cairo — Old Cairo Guide'">Cairo — Old Cairo Guide</title>
+    <meta name="description" content="Old Cairo: Coptic Cairo, Khan el-Khalili, Historic Cairo routes and tips." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+
+<body>
+<!-- ===== Header ===== -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ===== Hero Section ===== -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Cairo</span>
+                <h1>Old Cairo</h1>
+                <p class="lead">
+                    Coptic sites, medieval lanes, and souqs — walk the layers of history.
+                </p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Old Cairo"
+                 th:style="'background:url(' + @{/images/cairocairo.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Routes Section ===== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Suggested Routes</h2>
+            <ul>
+                <li>Coptic Cairo loop: Hanging Church → Coptic Museum → Ben Ezra Synagogue</li>
+                <li>Historic Cairo: Bab Zuweila → Al-Muizz Street → Khan el-Khalili</li>
+                <li>Citadel & Mosques: Citadel → Sultan Hassan → Al-Rifa’i</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== Tips Section ===== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Go early; midday gets crowded around souqs</li>
+                <li>Modest dress for religious sites</li>
+                <li>Carry cash for small shops</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== Gallery Section ===== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Coptic area"
+                         th:style="'background:url(' + @{/images/coptic-area.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Al-Muizz"
+                         th:style="'background:url(' + @{/images/almuiz.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Bazaar"
+                         th:style="'background:url(' + @{/images/bazar.jpg} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

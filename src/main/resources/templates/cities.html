@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cities of Egypt — ExploreHub</title>
+    <meta name="description" content="Discover Egyptian cities: Cairo, Giza, Luxor, Aswan, Alexandria, Sharm El-Sheikh, Hurghada, Dahab." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+
+        <nav class="nav__links">
+            <a th:href="@{/about}">About Egypt</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What's On</a>
+            <a th:href="@{/useful-info}">Useful Information</a>
+        </nav>
+
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main Content -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Plan your city stays</span>
+                <h1>Cities of Egypt</h1>
+                <p class="lead">
+                    Explore neighborhoods, sights, food, and culture—complete with galleries, guides, and videos.
+                </p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Cairo skyline"
+                 th:style="'background:url(' + @{/images/2022_10_5_14_38_0_121.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Major Cities</h2>
+            <div class="grid grid--cards">
+
+                <!-- ✅ Cairo -->
+                <a class="card" th:href="@{/cairo}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/cairoo.png} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Cairo"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Cairo</h3>
+                        <div class="card__meta">Museums, old quarters, Nile corniche</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Giza -->
+                <a class="card" th:href="@{/giza}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/960x0960x0.jpg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Giza Pyramids"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Giza</h3>
+                        <div class="card__meta">Pyramids Plateau and Sphinx</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Luxor -->
+                <a class="card" th:href="@{/luxor-city}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_8_7_14_50_5_786.jpg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Luxor"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Luxor</h3>
+                        <div class="card__meta">Temples and West Bank tombs</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Aswan -->
+                <a class="card" th:href="@{/aswan-city}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_7_23_21_12_26_890.jpeg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Aswan"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Aswan</h3>
+                        <div class="card__meta">Islands, Nubian culture, granite quarries</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Alexandria -->
+                <a class="card" th:href="@{/old-alexandria}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_8_7_18_28_42_326.jpeg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Alexandria"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Alexandria</h3>
+                        <div class="card__meta">Corniche, citadel, library</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Sharm -->
+                <a class="card" th:href="@{/sharm-city}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_8_9_4_36_18_765.jpeg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Sharm El-Sheikh"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Sharm El-Sheikh</h3>
+                        <div class="card__meta">Ras Mohammed, bays, nightlife</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Hurghada -->
+                <a class="card" th:href="@{/hurghada-city}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_10_3_12_4_41_989.jpg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Hurghada"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Hurghada</h3>
+                        <div class="card__meta">Marinas, reefs, family resorts</div>
+                    </div>
+                </a>
+
+                <!-- ✅ Dahab -->
+                <a class="card" th:href="@{/dahab-city}">
+                    <div class="card__media"
+                         th:style="'background:url(' + @{/images/2022_10_3_10_38_38_457.jpg} + ') center/cover no-repeat;'"
+                         role="img" aria-label="Dahab"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Dahab</h3>
+                        <div class="card__meta">Blue Hole, windsports, cafes</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

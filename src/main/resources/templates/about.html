@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Dynamic Page Title -->
+    <title th:text="${pageTitle}">About Egypt</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <!-- Home Link -->
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="nav__links">
+            <a th:classappend="${activePage == 'about'} ? 'active'" th:href="@{/about}">About Egypt</a>
+            <a th:href="@{/where-to-go}">Where to Go</a>
+            <a th:href="@{/what-to-do}">What to Do</a>
+            <a th:href="@{/whats-on}">What's On</a>
+            <a th:href="@{/useful-info}">Useful Information</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/show/pages}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>About Egypt</h1>
+            <p class="lead">
+                A crossroads of Africa and the Middle East, Egypt blends ancient civilization with vibrant modern life along the Nile and Mediterranean coasts.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">This is Egypt</h2>
+            <p>
+                Egypt's story stretches back millennia: from Pharaohs and pyramids to Coptic, Islamic and contemporary heritage.
+                Today, bustling cities like Cairo and Alexandria sit alongside desert oases, coral reefs, and timeless river towns.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Geography</h2>
+            <p>
+                The Nile Valley is Egypt's lifeline, flowing north to the Mediterranean.
+                To the east lies the Red Sea and Sinai's rugged mountains; to the west, the Sahara's deserts and oases such as Siwa, Bahariya, and Dakhla.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">History</h2>
+            <p>
+                From Old Kingdom pyramids to the temples of Luxor and Abu Simbel, Egypt's monuments trace dynasties,
+                Hellenistic influence, Roman and Arab eras, and modern nationhood—preserved in museums and archaeological sites.
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Language & Culture</h2>
+            <p>
+                Arabic is the official language, with Egyptian Arabic widely spoken.
+                Culture spans music, film, literature, crafts, and cuisine—think koshary, feteer, and fresh seafood by the coast.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>
+            ALL RIGHTS RESERVED © <span th:text="${currentYear}">2025</span>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

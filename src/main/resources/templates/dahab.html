@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dahab — The Red Sea</title>
+    <meta name="description" content="Dahab: Blue Hole, kitesurfing and windsurfing lagoons, relaxed waterfront cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/red-sea}">Back to The Red Sea</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main content -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Red Sea</span>
+                <h1>Dahab</h1>
+                <p class="lead">
+                    A laid-back town famed for the Blue Hole, windsports, and cozy shore dives.
+                </p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Dahab waterfront"
+                 style="background:url('/images/Dahab-waterfront.jpg') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ Overview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>
+                Chill cafes line the waterfront. Nearby reefs and canyons make for accessible shore entries and epic free-diving spots.
+            </p>
+        </div>
+    </section>
+
+    <!-- ✅ Top Experiences -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Dive or snorkel the Blue Hole</li>
+                <li>Kitesurf and windsurf in the lagoons</li>
+                <li>Day trips to Blue Lagoon and Abu Galum</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ✅ Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Blue Hole"
+                         style="background:url('/images/blue-hole.jpg') center/cover no-repeat;"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Waterfront cafes"
+                         style="background:url('/images/Waterfront-boutique.jpg') center/cover no-repeat;"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Kitesurfing"
+                         style="background:url('/images/2022_8_9_4_36_18_765.jpeg') center/cover no-repeat;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ Articles -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Freediving"
+                         style="background:url('/images/2022_8_7_14_31_57_32.jpg') center/cover no-repeat;"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Free-diving Dahab</h3>
+                        <div class="card__meta">Training safely at the Blue Hole and Lighthouse.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Lagoon"
+                         style="background:url('/images/Lagoon-resort.jpg') center/cover no-repeat;"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Kite & Wind Guide</h3>
+                        <div class="card__meta">Wind seasons, gear, and lagoon etiquette.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ Practical Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Winds stronger in spring; winter offers clear water</li>
+                <li>Respect reef entries; use marked access points</li>
+                <li>Cash preferred in many cafes</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

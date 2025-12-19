@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh — Tours</title>
+    <meta name="description" content="Popular tours in Sharm El-Sheikh: Ras Mohammed boat, Tiran Straits, desert safari & stargazing." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/sharm-city}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1>Sharm — Popular Tours</h1>
+
+            <div class="grid grid--cards">
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Ras Mohammed"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1542181961-9590d0c13338?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Ras Mohammed Boat Day</h3>
+                        <div class="card__meta">Snorkel reefs · Lunch on board</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Tiran Straits"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Tiran Straits Cruise</h3>
+                        <div class="card__meta">Snorkel lagoons · Calm bays</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Desert safari"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Desert Safari & Stargazing</h3>
+                        <div class="card__meta">Quad bikes · Bedouin dinner</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

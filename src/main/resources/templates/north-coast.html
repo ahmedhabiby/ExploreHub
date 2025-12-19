@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>North Coast — The Med</title>
+    <meta name="description" content="Egypt's North Coast: sandy Mediterranean beaches from Alexandria towards Marsa Matrouh." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/med}">Back to The Med</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Med</span>
+                <h1>North Coast</h1>
+                <p class="lead">Sun-drenched beaches, turquoise water, and summer escapes along the Mediterranean.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="North Coast beach"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>Stretching west from Alexandria, the North Coast features resort towns and tranquil coves with clear water ideal for families.</p>
+        </div>
+    </section>
+
+    <!-- THINGS TO DO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Things to Do</h2>
+            <ul>
+                <li>Beach days and water sports</li>
+                <li>Road-trip to Marsa Matrouh</li>
+                <li>Seafood dining and seaside walks</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Beach"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Turquoise water"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1625677631217-6e4ac8d9749c?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__media" role="img" aria-label="Sunset"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1544989164-31dc3c645987?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Family guide"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1526481280698-8fac9c07aa97?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">North Coast with Kids</h3>
+                        <div class="card__meta">Family-friendly beaches, coves, and activities.</div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card__media" role="img" aria-label="Road trip"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1586382053731-cf1e9d6f5d45?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Alexandria to Matrouh</h3>
+                        <div class="card__meta">A scenic coastal drive with stops and eats.</div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRACTICAL INFO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Peak: Jun–Aug; shoulder seasons are calmer</li>
+                <li>Book early for holiday weekends</li>
+                <li>Sea conditions vary; check lifeguard flags</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

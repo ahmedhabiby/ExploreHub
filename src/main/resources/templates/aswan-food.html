@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aswan — Food & Cafes Guide</title>
+    <meta name="description" content="Aswan food: Nubian dishes, riverside grills, and corniche cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/cities}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- Main -->
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Aswan</span>
+                <h1>Food & Cafes</h1>
+                <p class="lead">Savor Nubian flavors and Nile-view meals.</p>
+            </div>
+            <div class="hero__media" role="img" aria-label="Aswan food"
+                 th:style="'background:url(' + @{/images/2022_7_7_17_6_55_933.png} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">What to Try</h2>
+            <ul>
+                <li>Nubian tagines and breads</li>
+                <li>Fresh juices and tea by the river</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

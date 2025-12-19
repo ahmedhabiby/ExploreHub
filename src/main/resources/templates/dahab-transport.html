@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="'Dahab — Transport'">Dahab — Transport</title>
+    <meta name="description" content="Dahab transport: transfers from Sharm, local taxis/ride-hailing, boat trips to coves." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- ✅ Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/dahab}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- ✅ Main Content -->
+<main>
+    <section class="section">
+        <div class="container">
+            <h1 th:text="'Dahab — Transport'">Dahab — Transport</h1>
+            <ul>
+                <li>Transfers: Private cars/buses from Sharm (SSH)</li>
+                <li>Local: Taxis and ride-hailing around Masbat/Mashraba</li>
+                <li>Boats: Trips to Abu Galum and coves</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- ✅ Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

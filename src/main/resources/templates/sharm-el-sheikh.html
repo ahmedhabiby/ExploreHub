@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh — The Red Sea</title>
+    <meta name="description" content="Sharm El-Sheikh: Ras Mohammed National Park, Naama Bay, dive and snorkel heaven." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/red-sea}">Back to The Red Sea</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Red Sea</span>
+                <h1>Sharm El-Sheikh</h1>
+                <p class="lead">Gateway to Ras Mohammed’s protected reefs with lively resorts and nightlife.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Sharm El-Sheikh bay"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>From beginner-friendly bays to world-class wall dives, Sharm suits every level. On land, promenades, cafes, and shopping await.</p>
+        </div>
+    </section>
+
+    <!-- TOP EXPERIENCES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Top Experiences</h2>
+            <ul>
+                <li>Boat trips to Ras Mohammed and Tiran</li>
+                <li>Snorkeling at Shark’s Bay and Naama Bay</li>
+                <li>Evening walks in SOHO Square</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Ras Mohammed reef"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1542181961-9590d0c13338?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Naama Bay"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'"></div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Boat day"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Best sites"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Top Sharm Dive Sites</h3>
+                        <div class="card__meta">Ras Mohammed walls, Tiran Straits, and house reefs.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Evening"
+                         th:style="'background:url(' + @{https://images.unsplash.com/photo-1561231992-4c05c2a444ef?auto=format&fit=crop&w=1200&q=60} + ') center/cover no-repeat;'"></div>
+                    <div class="card__body">
+                        <h3 class="card__title">Evenings in Sharm</h3>
+                        <div class="card__meta">Naama Bay vs SOHO Square — where to stroll and dine.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRACTICAL INFO -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Marine park fees apply on some boat trips</li>
+                <li>Bring a light jacket for breezy evenings</li>
+                <li>Choose operators with strong safety records</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

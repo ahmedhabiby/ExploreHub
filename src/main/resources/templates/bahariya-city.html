@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bahariya City Guide — Egypt Explorer</title>
+    <meta name="description" content="Bahariya city guide: museums, historic mosques, Old Bahariya, oasis views, food & cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Bahariya</h1>
+                <p class="lead">Palm groves, hot springs, and a launchpad to the Black and White Deserts.</p>
+
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip">Museums</span>
+                    <span class="chip">Historic Mosques</span>
+                    <span class="chip">Old Bahariya</span>
+                    <span class="chip">Nile Views</span>
+                    <span class="chip">Food & Cafes</span>
+                </div>
+            </div>
+
+            <!-- Background image -->
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Bahariya oasis"
+                 th:style="'background:url(' + @{/images/Bahariya-oasis.jpg} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul>
+                <li>Valley of the Golden Mummies site displays</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>Village mosques around Bawiti</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Bahariya</h2>
+            <ul>
+                <li>Bawiti lanes and date markets</li>
+                <li>Local pottery and crafts</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Oasis viewpoints and desert horizons</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food & Cafes</h2>
+            <ul>
+                <li>Simple eateries serving tagines and dates</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

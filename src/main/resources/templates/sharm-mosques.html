@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sharm El-Sheikh — Historic Mosques Guide</title>
+    <meta name="description" content="Sharm mosques: Al-Sahaba Mosque in Old Market and neighborhood mosques." />
+    <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/sharm-city}" class="brand">
+            <span class="brand__logo"></span><span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN -->
+<main>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Sharm El-Sheikh</span>
+                <h1>Historic Mosques</h1>
+                <p class="lead">Landmark domes and lively squares in Old Sharm.</p>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Al-Sahaba Mosque"
+                 th:style="'background:url(' + @{https://images.unsplash.com/photo-1526406915894-6c5c62ad6c31?auto=format&fit=crop&w=1400&q=60} + ') center/cover no-repeat;'">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Featured</h2>
+            <ul>
+                <li>Al-Sahaba Mosque (Old Market)</li>
+                <li>Neighborhood mosques in Naama and Hadaba</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ETIQUETTE -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Etiquette & Tips</h2>
+            <ul>
+                <li>Dress modestly; be mindful during prayer times</li>
+                <li>Ask before photographing people</li>
+            </ul>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED © 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

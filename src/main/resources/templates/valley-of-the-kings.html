@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valley of the Kings — The Nile</title>
+    <meta name="description" content="Explore the royal tombs at the Valley of the Kings on Luxor's West Bank." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/nile}">Back to The Nile</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">Highlight — The Nile</span>
+                <h1>Valley of the Kings</h1>
+                <p class="lead">
+                    Intricately painted tombs of pharaohs, including the famed tomb of Tutankhamun.
+                </p>
+            </div>
+            <div
+                    class="hero__media"
+                    role="img"
+                    aria-label="Tomb corridor"
+                    style="background:url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Overview</h2>
+            <p>
+                Set within stark hills on the West Bank, the Valley shelters dozens of royal tombs
+                spanning New Kingdom dynasties.
+            </p>
+        </div>
+    </section>
+
+    <!-- Notable Tombs -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Notable Tombs</h2>
+            <ul>
+                <li>KV62 — Tutankhamun</li>
+                <li>KV11 — Ramesses III</li>
+                <li>KV17 — Seti I (separate ticket)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Tips -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Tips</h2>
+            <ul>
+                <li>Standard ticket covers a rotating selection of tombs</li>
+                <li>Photography rules vary; check signage</li>
+                <li>Go early for cooler temperatures</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Gallery</h2>
+            <div class="grid grid--cards">
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Tomb corridor"
+                         style="background:url('https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Wall paintings"
+                         style="background:url('https://images.unsplash.com/photo-1580060839134-75a6a1afd37d?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Hieroglyphs"
+                         style="background:url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Tomb entrance"
+                         style="background:url('https://images.unsplash.com/photo-1606577923831-88b16a6a4a4e?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Valley landscape"
+                         style="background:url('https://images.unsplash.com/photo-1526406915894-6c5c62ad6c31?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Decorated ceiling"
+                         style="background:url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles & Guides -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Articles & Guides</h2>
+            <div class="grid grid--cards">
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Tomb selection"
+                         style="background:url('https://images.unsplash.com/photo-1526401485004-2fda9f4b2c15?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Which Tombs to Choose</h3>
+                        <div class="card__meta">Maximize a standard ticket with 3 must-see chambers.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Seti I"
+                         style="background:url('https://images.unsplash.com/photo-1562572159-4efc207f5aff?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Inside Seti I (KV17)</h3>
+                        <div class="card__meta">Why this separate-ticket tomb is worth the splurge.</div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card__media"
+                         role="img"
+                         aria-label="Photography"
+                         style="background:url('https://images.unsplash.com/photo-1533008093099-699bacc26ff6?auto=format&fit=crop&w=1200&q=60') center/cover no-repeat;">
+                    </div>
+                    <div class="card__body">
+                        <h3 class="card__title">Photography Etiquette</h3>
+                        <div class="card__meta">Rules, etiquette, and how to capture colors respectfully.</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Info -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Practical Info</h2>
+            <ul>
+                <li>Hours: usually 6:00–17:00, last entry earlier for select tombs</li>
+                <li>Tickets: Standard covers 3 tombs; add-ons for Tutankhamun, Seti I</li>
+                <li>No touching walls; flash often restricted</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>

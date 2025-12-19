@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siwa City Guide — ExploreHub</title>
+    <meta name="description" content="Siwa city guide: museums, historic mosques, Old Siwa, oasis views, food & cafes." />
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+</head>
+<body>
+<header class="header">
+    <div class="container nav">
+        <a th:href="@{/}" class="brand">
+            <span class="brand__logo"></span>
+            <span>ExploreHub</span>
+        </a>
+        <nav class="nav__links">
+            <a th:href="@{/cities}">Back to Cities</a>
+        </nav>
+        <div class="nav__actions">
+            <button class="button button--ghost menu-toggle">Menu</button>
+            <a class="button" th:href="@{/#newsletter}">Subscribe</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero__surface"></div>
+        <div class="container hero__content">
+            <div>
+                <span class="eyebrow">City</span>
+                <h1>Siwa</h1>
+                <p class="lead">Desert oasis of palm groves, salt lakes, and mud-brick architecture.</p>
+                <div class="nav__actions" style="flex-wrap:wrap; gap:8px;">
+                    <span class="chip">Museums</span>
+                    <span class="chip">Historic Mosques</span>
+                    <span class="chip">Old Siwa</span>
+                    <span class="chip">Nile Views</span>
+                    <span class="chip">Food &amp; Cafes</span>
+                </div>
+            </div>
+            <div class="hero__media"
+                 role="img"
+                 aria-label="Siwa salt lake"
+                 style="background:url('https://images.unsplash.com/photo-1595514535381-441a6f62a7e2?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;">
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Museums</h2>
+            <ul>
+                <li>Siwa House Museum: local culture and crafts</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Historic Mosques</h2>
+            <ul>
+                <li>Shali Fortress mosque</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Old Siwa</h2>
+            <ul>
+                <li>Shali ruins and palm-lined lanes</li>
+                <li>Oracle Temple at Aghurmi (nearby)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Nile Views</h2>
+            <ul>
+                <li>Oasis lakes and sunset dunes</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section__title">Food &amp; Cafes</h2>
+            <ul>
+                <li>Eco-cafes with local dates and olives</li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__legal">
+        <div>ALL RIGHTS RESERVED© 2025</div>
+    </div>
+</footer>
+
+<script th:src="@{/assets/js/main.js}"></script>
+</body>
+</html>
