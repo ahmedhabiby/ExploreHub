@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            padding: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #74ebd5;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Food & Cafe</th>
+        <th>Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ratingm : ${foods}">
+        <td th:text="${ratingm.user.username}"></td>
+        <td th:text="${ratingm.foodCafe.title}"></td>
+        <td th:text="${ratingm.ratingValue}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(foods)}">
+        <td colspan="3" style="text-align:center;">No ratings found</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Average Ratings per Food & Cafe</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Food & Cafe</th>
+        <th>Average Rating</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rm : ${averageRatingsFoods}">
+        <td th:text="${rm[1]}"></td>
+        <td th:text="${#numbers.formatDecimal(rm[2], 1, 2)}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(foods)}">
+        <td colspan="2" style="text-align:center;">No ratings available</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

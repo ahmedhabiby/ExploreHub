@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: employees-app1
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://root:WShnfwoGykDFoNTntxNlJuUpZqOyDozt@gondola.proxy.rlwy.net:23245/railway
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: WShnfwoGykDFoNTntxNlJuUpZqOyDozt
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - app-network
+  mysql-db:
+    image: mysql:8.1
+    container_name: mysql-db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ahmed
+      MYSQL_DATABASE: test
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql  # ✅ ده المهم
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+
+volumes:
+  mysql_data:

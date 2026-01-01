@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class Rating {
+public class RateMusiums {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +21,6 @@ public class Rating {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "cairoMosques_id")
     @JsonIgnore
-    private CairoMosques cairoMosques;
-
-
+    private CairoMusiums museum;
 }

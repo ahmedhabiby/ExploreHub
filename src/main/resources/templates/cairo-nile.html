@@ -5,7 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cairo — Nile Views Guide</title>
     <meta name="description" content="Cairo Nile views: felucca rides, bridges at sunset, Zamalek promenades." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+    <style>
+        .heart-btn {
+            border: none;
+            background: none;
+            color: #e63946;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .heart-btn:hover { transform: scale(1.2); }
+
+        .star-rating button {
+            border: none;
+            background: none;
+            font-size: 1.5em;
+            color: #f4c150;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .star-rating button:hover { transform: scale(1.2); }
+    </style>
 </head>
 
 <body>
@@ -60,30 +84,67 @@
         </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- Featured Mosques -->
     <section class="section">
         <div class="container">
-            <h2 class="section__title">Gallery</h2>
+            <h2 class="section__title">Featured Nile View</h2>
 
             <div class="grid grid--cards">
-                <div class="card">
+                <article class="card" th:each="nile : ${niles}" th:if="${nile != null}">
                     <div class="card__media"
                          role="img"
-                         aria-label="Felucca"
-                         th:style="'background:url(' + @{/images/2022_7_21_18_57_29_773.jpeg} + ') center/cover no-repeat;'">
+                         th:aria-label="${nile.title}"
+                         th:style="'background:url(' + ${nile.imageUrl} + ') center/cover no-repeat;'">
                     </div>
-                </div>
 
-                <div class="card">
-                    <div class="card__media"
-                         role="img"
-                         aria-label="Bridge"
-                         th:style="'background:url(' + @{/images/2022_8_7_18_27_31_356.jpeg} + ') center/cover no-repeat;'">
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="${nile.title}"></h3>
+                        <div class="card__meta" th:text="${nile.metaData}"></div>
+
+                        <!-- Favorite Button -->
+                        <div th:if="${user != null}">
+                            <form th:action="@{'/add3/' + ${user.username} + '/' + ${nile.id}}" method="post" style="display:inline;">
+                                <button type="submit" class="heart-btn" aria-label="Add to favorites">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div th:if="${user == null}">
+                            <a th:href="@{/login}" class="heart-btn" aria-label="Login to add favorites">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        </div>
+
+                        <div class="star-rating" th:if="${user != null}">
+                            <span>Rate: </span>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-nile="${nile.id}"
+                                    data-value="1" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-nile="${nile.id}"
+                                    data-value="2" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-nile="${nile.id}"
+                                    data-value="3" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-nile="${nile.id}"
+                                    data-value="4" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-nile="${nile.id}"
+                                    data-value="5" onclick="submitRating(this)">☆</button>
+                        </div>
+
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
+
 </main>
 
 <!-- Footer -->
@@ -94,5 +155,33 @@
 </footer>
 
 <script th:src="@{/assets/js/main.js}"></script>
+<script>
+    function submitRating(button) {
+        const username = button.getAttribute('data-username');
+        const nileId = button.getAttribute('data-nile');
+        const ratingValue = button.getAttribute('data-value');
+
+        const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
+        fetch('/rate-nile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                [csrfHeader]: csrfToken
+            },
+            body: `username=${encodeURIComponent(username)}&nileId=${encodeURIComponent(nileId)}&ratingValue=${encodeURIComponent(ratingValue)}`
+        })
+            .then(response => {
+                if(response.ok) {
+                    alert('Rating saved!');
+
+                } else {
+                    alert('you are rate once');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 </body>
 </html>

@@ -29,10 +29,11 @@ public class RatingServiceImpl implements RatingService {
 
     @Override
     public void saveRating(Long userId, Long mosqueId, Double ratingValue) {
-
+        if(ratingRepo.findByMosqueIdAndUserId(mosqueId,userId).isPresent()){
+            throw new RuntimeException("exisiting rating musuim");
+        }
         User user = userRepo.findById(userId).orElseThrow();
         CairoMosques mosque = cairoRepo.findById(mosqueId).orElseThrow();
-
         Rating rating = new Rating();
         rating.setUser(user);
         rating.setCairoMosques(mosque);
@@ -53,7 +54,6 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public List<Object[]> getAverageRatingPerMosque() {
         List<Object[]> ratings = ratingRepo.findAverageRatingPerMosque();
-        System.out.println("ratings:"+ratings);
         return ratings;
     }
 

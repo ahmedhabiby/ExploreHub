@@ -72,15 +72,21 @@
             <a th:href="@{/what-to-do}">What to Do</a>
             <a th:href="@{/whats-on}">What's On</a>
             <a th:href="@{/useful-info}">Useful Information</a>
-            <div class="dropdown">
-                <button>Menu</button>
-                <div class="dropdown-content">
-                    <a th:href="@{/ratings}">Rating</a>
+            <div sec:authorize="hasAuthority('ROLE_ADMIN')" class="dropdown">
+                <button >Menu</button>
+                <div  class="dropdown-content">
+                    <a th:href="@{/ratings}">Rating Mosques</a>
+                    <a th:href="@{/ratings-old}">Rating Old Cairo</a>
+                    <a th:href="@{/ratings-foods}">Rating Foods & Cafes</a>
+                    <a th:href="@{/ratingsmusuim}">Rating Museum</a>
+                    <a th:href="@{/ratings-nile}">Rating Nile Views</a>
                     <a th:href="@{/manageUsers}">Users</a>
                     <a th:href="@{/updateUser}">Update User</a>
+                    <a th:href="@{/show}">Favourites</a>
+
                 </div>
             </div>
-            <a href="http://127.0.0.1:5000/">ChatWithUs</a>
+            <a href="http://127.0.0.1:5000/"  >ChatWithUs</a>
 
 
 

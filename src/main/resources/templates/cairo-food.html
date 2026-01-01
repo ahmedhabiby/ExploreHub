@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cairo — Food & Cafes Guide</title>
     <meta name="description" content="Cairo food: koshary, taameya, street eats, and riverside cafes." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <link rel="stylesheet" th:href="@{/assets/css/style.css}" />
+
+    <style>
+        .heart-btn {
+            border: none;
+            background: none;
+            color: #e63946;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .heart-btn:hover { transform: scale(1.2); }
+
+        .star-rating button {
+            border: none;
+            background: none;
+            font-size: 1.5em;
+            color: #f4c150;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .star-rating button:hover { transform: scale(1.2); }
+    </style>
 </head>
 <body>
 <!-- Header -->
@@ -38,7 +63,7 @@
             <div class="hero__media"
                  role="img"
                  aria-label="Egyptian cuisine"
-                 th:style="'background:url(' + @{/images/الطعمية-المصرية-مثل-المطاعم.jpg} + ') center/cover no-repeat;'">
+                 th:style="'background:url(' + @{/images/tamea.jpg} + ') center/cover no-repeat;'">
             </div>
         </div>
     </section>
@@ -54,24 +79,63 @@
             </ul>
         </div>
     </section>
-
-    <!-- Gallery -->
+    <!-- Featured Mosques -->
     <section class="section">
         <div class="container">
-            <h2 class="section__title">Gallery</h2>
+            <h2 class="section__title">Featured Food & Cafe View</h2>
+
             <div class="grid grid--cards">
-                <div class="card">
+                <article class="card" th:each="food : ${foods}" th:if="${food != null}">
                     <div class="card__media"
                          role="img"
-                         aria-label="Koshary"
-                         th:style="'background:url(' + @{/images/koshry.jpg} + ') center/cover no-repeat;'"></div>
-                </div>
-                <div class="card">
-                    <div class="card__media"
-                         role="img"
-                         aria-label="Cafe"
-                         th:style="'background:url(' + @{/images/2025_1_19_11_51_3_666.jpg} + ') center/cover no-repeat;'"></div>
-                </div>
+                         th:aria-label="${food.title}"
+                         th:style="'background:url(' + ${food.imageUrl} + ') center/cover no-repeat;'">
+                    </div>
+
+                    <div class="card__body">
+                        <h3 class="card__title" th:text="${food.title}"></h3>
+                        <div class="card__meta" th:text="${food.metaData}"></div>
+
+                        <!-- Favorite Button -->
+                        <div th:if="${user != null}">
+                            <form th:action="@{'/add4/' + ${user.username} + '/' + ${food.id}}" method="post" style="display:inline;">
+                                <button type="submit" class="heart-btn" aria-label="Add to favorites">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div th:if="${user == null}">
+                            <a th:href="@{/login}" class="heart-btn" aria-label="Login to add favorites">
+                                <i class="fa fa-heart"></i>
+                            </a>
+                        </div>
+
+                        <div class="star-rating" th:if="${user != null}">
+                            <span>Rate: </span>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-food="${food.id}"
+                                    data-value="1" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-food="${food.id}"
+                                    data-value="2" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-food="${food.id}"
+                                    data-value="3" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-food="${food.id}"
+                                    data-value="4" onclick="submitRating(this)">☆</button>
+                            <button type="button"
+                                    th:data-username="${user.username}"
+                                    th:data-food="${food.id}"
+                                    data-value="5" onclick="submitRating(this)">☆</button>
+                        </div>
+
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -85,5 +149,33 @@
 </footer>
 
 <script th:src="@{/assets/js/main.js}"></script>
+<script>
+    function submitRating(button) {
+        const username = button.getAttribute('data-username');
+        const foodId = button.getAttribute('data-food');
+        const ratingValue = button.getAttribute('data-value');
+
+        const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+        const csrfHeader = document.querySelector('meta[name="_csrf_header"]').getAttribute('content');
+
+        fetch('/rate-food', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                [csrfHeader]: csrfToken
+            },
+            body: `username=${encodeURIComponent(username)}&foodId=${encodeURIComponent(foodId)}&ratingValue=${encodeURIComponent(ratingValue)}`
+        })
+            .then(response => {
+                if(response.ok) {
+                    alert('Rating saved!');
+
+                } else {
+                    alert('you are rate once');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
 </body>
 </html>

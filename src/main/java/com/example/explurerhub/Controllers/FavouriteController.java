@@ -1,13 +1,8 @@
 package com.example.explurerhub.Controllers;
 
-import com.example.explurerhub.Model.CairoMosques;
-import com.example.explurerhub.Model.CairoMusiums;
-import com.example.explurerhub.Model.User;
-import com.example.explurerhub.Repository.FavouriteMusimRepo;
-import com.example.explurerhub.Repository.FavouriteRepo;
-import com.example.explurerhub.Service.FavouriteService;
-import com.example.explurerhub.Service.FavoutiteMusiumsService;
-import com.example.explurerhub.Service.UserService;
+import com.example.explurerhub.Model.*;
+import com.example.explurerhub.Repository.*;
+import com.example.explurerhub.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,13 +22,25 @@ public class FavouriteController {
     private FavouriteRepo favouriteRepo;
     private FavoutiteMusiumsService favoutiteMusiumsService;
     private FavouriteMusimRepo favouriteMusimRepo;
+    private FavouriteOldCairoRepo favouriteOldCairoRepo;
+    private FavoutiteOldCairoService favoutiteOldCairoService;
+    private FavouriteNileRepo favouriteNileRepo;
+    private FavoutiteNileService favoutiteNileService;
+    private FavouriteFoodCafeRepo  favouriteFoodCafeRepo;
+    private FavoutiteFoodCafeService favoutiteFoodCafeService;
     @Autowired
-    public FavouriteController(FavouriteService favouriteService,FavouriteMusimRepo favouriteMusimRepo,FavoutiteMusiumsService favoutiteMusiumsService, UserService userService, FavouriteRepo favouriteRepo) {
+    public FavouriteController(FavouriteService favouriteService,FavouriteFoodCafeRepo  favouriteFoodCafeRepo,FavoutiteFoodCafeService favoutiteFoodCafeService,FavouriteNileRepo favouriteNileRepo,FavoutiteNileService favoutiteNileService,FavoutiteOldCairoService favoutiteOldCairoService,FavouriteOldCairoRepo favouriteOldCairoRepo,FavouriteMusimRepo favouriteMusimRepo,FavoutiteMusiumsService favoutiteMusiumsService, UserService userService, FavouriteRepo favouriteRepo) {
         this.favouriteService = favouriteService;
         this.userService = userService;
         this.favouriteRepo = favouriteRepo;
         this.favoutiteMusiumsService = favoutiteMusiumsService;
         this.favouriteMusimRepo = favouriteMusimRepo;
+        this.favouriteOldCairoRepo = favouriteOldCairoRepo;
+        this.favoutiteOldCairoService = favoutiteOldCairoService;
+        this.favouriteNileRepo = favouriteNileRepo;
+        this.favoutiteNileService = favoutiteNileService;
+        this.favouriteFoodCafeRepo = favouriteFoodCafeRepo;
+        this.favoutiteFoodCafeService = favoutiteFoodCafeService;
     }
 
     @PostMapping("/add/{username}/{MosqueId}")
@@ -43,7 +50,27 @@ public class FavouriteController {
         return "redirect:/show";
 
     }
+    @PostMapping("/add2/{username}/{oldId}")
+    public String addOldToFavourite(@PathVariable String username, @PathVariable Long oldId) {
+        Long userId = userService.getUserIdByUsername(username);
+        favoutiteOldCairoService.addOldCairoToFavourite(userId, oldId);
+        return "redirect:/show";
 
+    }
+    @PostMapping("/add3/{username}/{nileId}")
+    public String addNileToFavourite(@PathVariable String username, @PathVariable Long nileId) {
+        Long userId = userService.getUserIdByUsername(username);
+        favoutiteNileService.addNileToFavourite(userId, nileId);
+        return "redirect:/show";
+
+    }
+    @PostMapping("/add4/{username}/{foodId}")
+    public String addFoodCafeToFavourite(@PathVariable String username, @PathVariable Long foodId) {
+        Long userId = userService.getUserIdByUsername(username);
+        favoutiteFoodCafeService.addFoodCafeToFavourite(userId, foodId);
+        return "redirect:/show";
+
+    }
 
 
     @GetMapping("/cairo-mosques")
@@ -58,6 +85,44 @@ public class FavouriteController {
 
         return "cairo-mosques";
     }
+
+    @GetMapping("/cairo-old")
+    public String showCairoOldCairo(Model model, @AuthenticationPrincipal UserDetails user) {
+        List<oldCairo> oldCairos = favouriteOldCairoRepo.findAll();
+        model.addAttribute("oldCairos", oldCairos);
+
+        // Add logged-in user to model for Thymeleaf
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+
+        return "cairo-old";
+    }
+    @GetMapping("/cairo-nile")
+    public String showNileCairo(Model model, @AuthenticationPrincipal UserDetails user) {
+        List<Nile> niles = favouriteNileRepo.findAll();
+        model.addAttribute("niles", niles);
+
+        // Add logged-in user to model for Thymeleaf
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+
+        return "cairo-nile";
+    }
+    @GetMapping("/cairo-food")
+    public String showFoodCafeCairo(Model model, @AuthenticationPrincipal UserDetails user) {
+        List<FoodCafe> foods = favouriteFoodCafeRepo.findAll();
+        model.addAttribute("foods", foods);
+
+        // Add logged-in user to model for Thymeleaf
+        if (user != null) {
+            model.addAttribute("user", user);
+        }
+
+        return "cairo-food";
+    }
+
 
     @PostMapping("/add1/{username}/{MusiumsId}")
     public String addMusiumsToFavourite(@PathVariable String username, @PathVariable Long MusiumsId) {
@@ -85,8 +150,23 @@ public class FavouriteController {
     public String removeMosquefromFavourite(@PathVariable Long userId, @PathVariable Long MosqueId) {
         favouriteService.removeMosqueFromFavourite(userId, MosqueId);
         return "redirect:/show";
-
     }
+    @PostMapping("/remove3/{userId}/{nileId}")
+    public String removeNilefromFavourite(@PathVariable Long userId, @PathVariable Long nileId) {
+        favoutiteNileService.removeNileFromFavourite(userId, nileId);
+        return "redirect:/show";
+    }
+    @PostMapping("/remove4/{userId}/{foodId}")
+    public String removeFoodCafefromFavourite(@PathVariable Long userId, @PathVariable Long foodId) {
+        favoutiteFoodCafeService.removeFoodCafeFromFavourite(userId, foodId);
+        return "redirect:/show";
+    }
+        @PostMapping("/remove2/{userId}/{oldId}")
+        public String removeOldfromFavourite(@PathVariable Long userId, @PathVariable Long oldId) {
+            favoutiteOldCairoService.removeOldCairoFromFavourite(userId, oldId);
+            return "redirect:/show";
+
+        }
     @PostMapping("/remove1/{userId}/{MusiumsId}")
     public String removeMusiumsfromFavourite(@PathVariable Long userId, @PathVariable Long MusiumsId) {
         favoutiteMusiumsService.removeMusiumFromFavourite(userId, MusiumsId);
@@ -105,6 +185,12 @@ public class FavouriteController {
         model.addAttribute("userId", UserId);
         List<CairoMusiums> cairoMusiums = favoutiteMusiumsService.getFavouriteMusiums(UserId);
         model.addAttribute("musiums", cairoMusiums);
+        List<oldCairo> oldCairos = favoutiteOldCairoService.getFavouriteOldCairos(UserId);
+        model.addAttribute("oldCairos", oldCairos);
+        List<Nile> niles = favoutiteNileService.getFavouriteNiles(UserId);
+        model.addAttribute("niles", niles);
+        List<FoodCafe> foods = favoutiteFoodCafeService.getFavouriteFoodCafes(UserId);
+        model.addAttribute("foods", foods);
         return "shopping";
     }
 }

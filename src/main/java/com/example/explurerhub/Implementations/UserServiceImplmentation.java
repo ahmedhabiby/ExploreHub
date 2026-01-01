@@ -22,6 +22,9 @@ public class UserServiceImplmentation implements UserService {
     }
     @Override
     public void saveUser(User user) {
+        if(userRepo.findByUsername(user.getUsername()) != null){
+            throw new RuntimeException("user is exsist");
+        }
         userRepo.save(user);
     }
 

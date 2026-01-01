@@ -2,13 +2,15 @@ package com.example.explurerhub.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class Rating {
+public class RateOldCairo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,9 +23,6 @@ public class Rating {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "cairoMosques_id")
     @JsonIgnore
-    private CairoMosques cairoMosques;
-
-
+    private oldCairo oldCairo;
 }

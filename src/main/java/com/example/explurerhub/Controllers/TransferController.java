@@ -104,10 +104,6 @@ public class TransferController {
     public String showBibliotheca() {
         return "bibliotheca";
     }
-    @GetMapping("/cairo-food")
-    public String showCairoFood() {
-        return "cairo-food";
-    }
     @GetMapping("/cairo-hotels")
     public String showCairoHotels() {
         return "cairo-hotels";
@@ -116,13 +112,6 @@ public class TransferController {
     public String showCairoMosques() {
         return "cairo";
     }
-
-    @GetMapping("/old-cairo")
-    public String showOldCairo() {
-        return "cairo-old";
-    }
-
-
     @GetMapping("/cairo-tours")
     public String showCairoTours() {
         return "cairo-tours";
@@ -147,7 +136,6 @@ public class TransferController {
     public String showDahabTransport() {
         return "dahab-transport";
     }
-
     @GetMapping("/dakhla-kharga")
     public String showDakhlaKharga() {
         return "dakhla-kharga";
@@ -160,7 +148,6 @@ public class TransferController {
     public String showDakhlaKhargaTransport() {
         return "dakhla-kharga-transport";
     }
-
     @GetMapping("/edfu-kom-ombo")
     public String showEdfuKomOmbo() {
         return "edfu-kom-ombo";

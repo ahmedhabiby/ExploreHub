@@ -2,14 +2,17 @@ package com.example.explurerhub.Controllers;
 
 import com.example.explurerhub.Model.User;
 import com.example.explurerhub.Service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,35 +38,44 @@ public class SecurityController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user){
+    public String saveUser(
+            @Valid @ModelAttribute("user") User user,
+            BindingResult result,
+            Model model) {
 
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+        // ❌ لو في Validation Errors (required / regex)
+        if (result.hasErrors()) {
+            return "signup";
+        }
 
-        userService.saveUser(user);
+        try {
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
 
+            userService.saveUser(user);
+
+        } catch (RuntimeException ex) {
+            // username موجود قبل كده
+            result.rejectValue("username", "error.user", ex.getMessage());
+            return "signup";
+        }
 
         Long newUserId = jdbcTemplate.queryForObject(
-                "SELECT id FROM users WHERE username = ?", Long.class, user.getUsername());
-
+                "SELECT id FROM users WHERE username = ?",
+                Long.class,
+                user.getUsername()
+        );
 
         final Long roleId = 2L;
-
-        if (newUserId != null) {
-            try {
-
-                jdbcTemplate.update(
-                        "INSERT INTO users_roles (user_id, role_id) VALUES (?, ?)",
-                        newUserId, roleId);
-                System.out.println("User " + user.getUsername() + " successfully assigned Role ID: " + roleId);
-            } catch (Exception e) {
-
-                System.err.println("Error assigning role " + roleId + " to user " + newUserId + ": " + e.getMessage());
-            }
-        }
+        jdbcTemplate.update(
+                "INSERT INTO users_roles (user_id, role_id) VALUES (?, ?)",
+                newUserId, roleId
+        );
 
         return "redirect:/login";
     }
+
+
     @GetMapping("/signup")
     public String showSignupForm(Model model) {
         model.addAttribute("user", new User());

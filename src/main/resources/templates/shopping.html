@@ -70,7 +70,6 @@
         </a>
         <nav class="nav__links">
             <a th:href="@{/cities}">Cities</a>
-            <a th:href="@{/favourites/my-list}">Favorites</a>
         </nav>
         <div class="nav__actions">
             <button class="button button--ghost menu-toggle">Menu</button>
@@ -141,6 +140,77 @@
                 </form>
             </div>
         </div>
+        <!-- ========== FAVORITE MOSQUES ========== -->
+        <h2 class="section-title">Favorite Old cairo</h2>
+        <div th:if="${#lists.isEmpty(oldCairos)}">
+            <p style="color: gray;">No favorite mosques found.</p>
+        </div>
+
+        <div class="favorites-list">
+            <div class="favorite-item" th:each="old : ${oldCairos}">
+                <div class="item-image"
+                     th:style="'background:url(' + ${old.imageUrl} + ') center/cover no-repeat;'"
+                     th:aria-label="${old.title}">
+                </div>
+                <div class="item-details">
+                    <h2 th:text="${old.title}" style="margin-top: 0; margin-bottom: 5px;"></h2>
+                    <p th:text="${old.metaData}" style="color: #555; font-size: 0.9em;"></p>
+                </div>
+                <form th:action="@{'/remove2/' + ${userId}+'/'+${old.id}}" method="post" style="margin-left: 20px;">
+                    <button type="submit" class="remove-btn">
+                        <i class="fa fa-trash-alt"></i> Remove
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- ========== FAVORITE MOSQUES ========== -->
+        <h2 class="section-title">Favorite Nile View</h2>
+        <div th:if="${#lists.isEmpty(niles)}">
+            <p style="color: gray;">No favorite Niles found.</p>
+        </div>
+
+        <div class="favorites-list">
+            <div class="favorite-item" th:each="nile : ${niles}">
+                <div class="item-image"
+                     th:style="'background:url(' + ${nile.imageUrl} + ') center/cover no-repeat;'"
+                     th:aria-label="${nile.title}">
+                </div>
+                <div class="item-details">
+                    <h2 th:text="${nile.title}" style="margin-top: 0; margin-bottom: 5px;"></h2>
+                    <p th:text="${nile.metaData}" style="color: #555; font-size: 0.9em;"></p>
+                </div>
+                <form th:action="@{'/remove3/' + ${userId}+'/'+${nile.id}}" method="post" style="margin-left: 20px;">
+                    <button type="submit" class="remove-btn">
+                        <i class="fa fa-trash-alt"></i> Remove
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ========== FAVORITE MOSQUES ========== -->
+        <h2 class="section-title">Favorite Food & Cafe </h2>
+        <div th:if="${#lists.isEmpty(foods)}">
+            <p style="color: gray;">No favorite Foods found.</p>
+        </div>
+
+        <div class="favorites-list">
+            <div class="favorite-item" th:each="food : ${foods}">
+                <div class="item-image"
+                     th:style="'background:url(' + ${food.imageUrl} + ') center/cover no-repeat;'"
+                     th:aria-label="${food.title}">
+                </div>
+                <div class="item-details">
+                    <h2 th:text="${food.title}" style="margin-top: 0; margin-bottom: 5px;"></h2>
+                    <p th:text="${food.metaData}" style="color: #555; font-size: 0.9em;"></p>
+                </div>
+                <form th:action="@{'/remove4/' + ${userId}+'/'+${food.id}}" method="post" style="margin-left: 20px;">
+                    <button type="submit" class="remove-btn">
+                        <i class="fa fa-trash-alt"></i> Remove
+                    </button>
+                </form>
+            </div>
+        </div>
+
     </div>
 </main>
 
