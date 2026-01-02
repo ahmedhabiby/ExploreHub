@@ -259,12 +259,36 @@
             </div>
         </div>
     </section>
+    <!-- NEWSLETTER -->
+    <section id="newsletter" class="section">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Subscribe to our newsletter</h2>
+            </div>
 
-    <!-- NEWSLETTER --> <section id="newsletter" class="section">
-    <div class="container"> <div class="section__header">
-        <h2 class="section__title">Subscribe to our newsletter</h2>
-    </div> <form class="card" style="padding:12px; display:grid; gap:12px;" th:action="@{/saveSubscriber}" method="post" aria-label="Newsletter signup"> <label style="display:none" for="email">Email</label> <input id="email" name="email" type="email" placeholder="Your email" required style="padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); color:#fff;"/>
-    <button class="button" type="submit">Subscribe</button> </form> </div> </section> </main>
+            <!-- رسائل الخطأ -->
+            <div th:if="${errorMessage}" style="color:red; margin-bottom:10px;">
+                <p th:text="${errorMessage}"></p>
+            </div>
+
+            <!-- رسالة النجاح -->
+            <div th:if="${successMessage}" style="color:green; margin-bottom:10px;">
+                <p th:text="${successMessage}"></p>
+            </div>
+
+            <form class="card"
+                  style="padding:12px; display:grid; gap:12px;"
+                  th:action="@{/saveSubscriber}" method="post"
+                  aria-label="Newsletter signup">
+
+                <label style="display:none" for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Your email" required
+                       style="padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.14);
+                          background:rgba(255,255,255,.06); color:#fff;"/>
+                <button class="button" type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
 
 
 </main>

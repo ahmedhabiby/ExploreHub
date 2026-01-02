@@ -29,7 +29,7 @@ public class SubscriberController {
 
     @PostMapping("/saveSubscriber")
     public String saveSubscriber(@ModelAttribute("subscriber") Subscribers subscriber,
-                                 @AuthenticationPrincipal UserDetails loggedUser) {
+                                 @AuthenticationPrincipal UserDetails loggedUser,Model model) {
         if (loggedUser != null) {
             User user = userService.findUserByUsername(loggedUser.getUsername());
 
@@ -38,13 +38,16 @@ public class SubscriberController {
             }
         }
 
-        subscriberService.saveSubscribeers(subscriber);
-        return "redirect:/sub";
-    }
-
-    @GetMapping("/sub")
-    public String index(Model model) {
+        try {
+            subscriberService.saveSubscribeers(subscriber);
+            model.addAttribute("successMessage", "Subscription successful!");
+        } catch (RuntimeException ex) {
+            // هنا نرسل رسالة الخطأ للصفحة
+            model.addAttribute("errorMessage", ex.getMessage());
+        }
         model.addAttribute("subscriber", new Subscribers());
         return "index";
     }
+
+
 }
