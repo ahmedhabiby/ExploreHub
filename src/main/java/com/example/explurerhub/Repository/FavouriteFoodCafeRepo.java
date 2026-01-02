@@ -5,4 +5,5 @@ import com.example.explurerhub.Model.Nile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FavouriteFoodCafeRepo extends JpaRepository<FoodCafe,Long> {
+
 }

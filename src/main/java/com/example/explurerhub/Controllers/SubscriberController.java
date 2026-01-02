@@ -39,10 +39,10 @@ public class SubscriberController {
         }
 
         subscriberService.saveSubscribeers(subscriber);
-        return "redirect:/";
+        return "redirect:/sub";
     }
 
-    @GetMapping("/")
+    @GetMapping("/sub")
     public String index(Model model) {
         model.addAttribute("subscriber", new Subscribers());
         return "index";

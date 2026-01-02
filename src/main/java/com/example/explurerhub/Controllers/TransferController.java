@@ -2,6 +2,9 @@ package com.example.explurerhub.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @Controller
 public class TransferController {
@@ -9,7 +12,13 @@ public class TransferController {
     public String showAbout() {
         return "about";
     }
-
+    @GetMapping("/demo")
+    public String showDemo(Authentication authentication) {
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "redirect:/show/pages";
+        }
+        return "demo";
+    }
     @GetMapping("/where-to-go")
     public String showWhereToGo() {
         return "where-to-go";

@@ -56,9 +56,8 @@ public class Configure {
 
                 .authorizeHttpRequests(configurer ->
                         configurer
-                                .requestMatchers("/signup", "/saveUser", "/css/**", "/js/**").permitAll()
+                                .requestMatchers("/signup","/demo","/assets/**","/images/**" ,"/saveUser", "/css/**", "/js/**","/swagger-ui/**","/v3/**").permitAll()
                                 .requestMatchers("/login").permitAll()     // 👈 مهم جداً
-                                .requestMatchers("/chat", "/chat/**").permitAll()
                                 .anyRequest().authenticated()
                 )
 

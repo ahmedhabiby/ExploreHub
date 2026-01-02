@@ -30,6 +30,12 @@ public class FavoutiteNileServiceImpl implements FavoutiteNileService {
     public void addNileToFavourite(Long userId, Long oldId) {
         User user=userRepo.findById(userId).orElseThrow();
         Nile nile=favouriteNileRepo.findById(oldId).orElseThrow();
+        boolean alreadyFavourite = nile.getUsers().stream()
+                .anyMatch(u -> u.getId().equals(user.getId()));
+
+        if (alreadyFavourite) {
+            throw new RuntimeException("ALREADY_FAVOURITE");
+        }
         nile.getUsers().add(user);
         favouriteNileRepo.save(nile);
     }

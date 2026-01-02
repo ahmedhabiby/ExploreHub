@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,9 +32,6 @@ public class SecurityController {
     }
     @GetMapping("/login")
     public String showLoginPage(Authentication authentication) {
-        if (authentication != null && authentication.isAuthenticated()) {
-            return "redirect:/show/pages";
-        }
         return "login";
     }
 

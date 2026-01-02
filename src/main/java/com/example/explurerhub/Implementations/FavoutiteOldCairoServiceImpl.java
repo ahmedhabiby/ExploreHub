@@ -30,6 +30,12 @@ public class FavoutiteOldCairoServiceImpl implements FavoutiteOldCairoService {
     public void addOldCairoToFavourite(Long userId, Long oldId) {
         User user=userRepo.findById(userId).orElseThrow();
         oldCairo oldCairo=favouriteOldCairoRepo.findById(oldId).orElseThrow();
+        boolean alreadyFavourite = oldCairo.getUsers().stream()
+                .anyMatch(u -> u.getId().equals(user.getId()));
+
+        if (alreadyFavourite) {
+            throw new RuntimeException("ALREADY_FAVOURITE");
+        }
         oldCairo.getUsers().add(user);
         favouriteOldCairoRepo.save(oldCairo);
     }

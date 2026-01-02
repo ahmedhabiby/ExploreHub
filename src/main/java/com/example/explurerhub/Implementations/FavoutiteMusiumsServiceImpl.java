@@ -27,6 +27,12 @@ public class FavoutiteMusiumsServiceImpl implements FavoutiteMusiumsService {
     public void addMusiumsToFavourite(Long userId, Long MusiumsId) {
         User user=userRepo.findById(userId).orElseThrow();
         CairoMusiums musiums=favouriteMusimRepo.findById(MusiumsId).orElseThrow();
+        boolean alreadyFavourite = musiums.getUsers().stream()
+                .anyMatch(u -> u.getId().equals(user.getId()));
+
+        if (alreadyFavourite) {
+            throw new RuntimeException("ALREADY_FAVOURITE");
+        }
         musiums.getUsers().add(user);
         favouriteMusimRepo.save(musiums);
     }

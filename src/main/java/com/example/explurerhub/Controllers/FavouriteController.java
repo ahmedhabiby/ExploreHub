@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -44,30 +46,67 @@ public class FavouriteController {
     }
 
     @PostMapping("/add/{username}/{MosqueId}")
-    public String addMosqueToFavourite(@PathVariable String username, @PathVariable Long MosqueId) {
+    public String addMosqueToFavourite(@PathVariable String username, @PathVariable Long MosqueId, RedirectAttributes redirectAttributes) {
         Long userId = userService.getUserIdByUsername(username);
-        favouriteService.addMosqueToFavourite(userId, MosqueId);
+        try {
+            favouriteService.addMosqueToFavourite(userId, MosqueId);
+            redirectAttributes.addFlashAttribute("success",
+                    "Added to favourites ❤️");
+        } catch (RuntimeException ex) {
+            if ("ALREADY_FAVOURITE".equals(ex.getMessage())) {
+                redirectAttributes.addFlashAttribute("error",
+                        "You already added this before ⭐");
+            }
+        }
         return "redirect:/show";
 
     }
     @PostMapping("/add2/{username}/{oldId}")
-    public String addOldToFavourite(@PathVariable String username, @PathVariable Long oldId) {
+    public String addOldToFavourite(@PathVariable String username, @PathVariable Long oldId, RedirectAttributes redirectAttributes) {
         Long userId = userService.getUserIdByUsername(username);
-        favoutiteOldCairoService.addOldCairoToFavourite(userId, oldId);
+        try {
+            favoutiteOldCairoService.addOldCairoToFavourite(userId, oldId);
+            redirectAttributes.addFlashAttribute("success",
+                    "Added to favourites ❤️");
+        } catch (RuntimeException ex) {
+            if ("ALREADY_FAVOURITE".equals(ex.getMessage())) {
+                redirectAttributes.addFlashAttribute("error",
+                        "You already added this before ⭐");
+            }
+        }
         return "redirect:/show";
 
     }
     @PostMapping("/add3/{username}/{nileId}")
-    public String addNileToFavourite(@PathVariable String username, @PathVariable Long nileId) {
+    public String addNileToFavourite(@PathVariable String username, @PathVariable Long nileId, RedirectAttributes redirectAttributes) {
         Long userId = userService.getUserIdByUsername(username);
-        favoutiteNileService.addNileToFavourite(userId, nileId);
+        try {
+            favoutiteNileService.addNileToFavourite(userId, nileId);
+            redirectAttributes.addFlashAttribute("success",
+                    "Added to favourites ❤️");
+        } catch (RuntimeException ex) {
+            if ("ALREADY_FAVOURITE".equals(ex.getMessage())) {
+                redirectAttributes.addFlashAttribute("error",
+                        "You already added this before ⭐");
+            }
+        }
         return "redirect:/show";
 
     }
     @PostMapping("/add4/{username}/{foodId}")
-    public String addFoodCafeToFavourite(@PathVariable String username, @PathVariable Long foodId) {
+    public String addFoodCafeToFavourite(@PathVariable String username, @PathVariable Long foodId, RedirectAttributes redirectAttributes) {
         Long userId = userService.getUserIdByUsername(username);
-        favoutiteFoodCafeService.addFoodCafeToFavourite(userId, foodId);
+
+        try {
+            favoutiteFoodCafeService.addFoodCafeToFavourite(userId, foodId);
+            redirectAttributes.addFlashAttribute("success",
+                    "Added to favourites ❤️");
+        } catch (RuntimeException ex) {
+            if ("ALREADY_FAVOURITE".equals(ex.getMessage())) {
+                redirectAttributes.addFlashAttribute("error",
+                        "You already added this before ⭐");
+            }
+        }
         return "redirect:/show";
 
     }

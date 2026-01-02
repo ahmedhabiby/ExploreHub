@@ -26,6 +26,12 @@ public class FavouriteServiceImplementation implements FavouriteService {
     public void addMosqueToFavourite(Long userId, Long MosqueId) {
         User user = userRepo.findById(userId).orElseThrow();
         CairoMosques cairoMosques=favouriteRepo.findById(MosqueId).orElseThrow();
+        boolean alreadyFavourite = cairoMosques.getUsers().stream()
+                .anyMatch(u -> u.getId().equals(user.getId()));
+
+        if (alreadyFavourite) {
+            throw new RuntimeException("ALREADY_FAVOURITE");
+        }
         cairoMosques.getUsers().add(user);
         favouriteRepo.save(cairoMosques);
     }

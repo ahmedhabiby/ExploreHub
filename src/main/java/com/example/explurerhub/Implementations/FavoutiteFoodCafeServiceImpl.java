@@ -30,6 +30,12 @@ public class FavoutiteFoodCafeServiceImpl implements FavoutiteFoodCafeService {
     public void addFoodCafeToFavourite(Long userId, Long foodId) {
         User user=userRepo.findById(userId).orElseThrow();
         FoodCafe foodCafe=favouriteFoodCafeRepo.findById(foodId).orElseThrow();
+        boolean alreadyFavourite = foodCafe.getUsers().stream()
+                .anyMatch(u -> u.getId().equals(user.getId()));
+
+        if (alreadyFavourite) {
+            throw new RuntimeException("ALREADY_FAVOURITE");
+        }
         foodCafe.getUsers().add(user);
         favouriteFoodCafeRepo.save(foodCafe);
     }
