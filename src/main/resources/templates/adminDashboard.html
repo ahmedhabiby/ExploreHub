@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ExplorerHub Admin</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --bg-color: #f3f4f6;
+            --card-bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --sidebar-width: 260px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- LEFT SIDEBAR (Navigation) --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background: #1e1e2d;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-pills .nav-link {
+            color: #a2a3b7;
+            font-weight: 500;
+            padding: 12px 15px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .nav-pills .nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+        .nav-pills .nav-link.active {
+            background: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 30px;
+        }
+
+        /* Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .page-title { font-size: 1.75rem; font-weight: 700; }
+        .action-bar a { margin-left: 10px; }
+
+        /* Cards & Tables */
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .table thead th {
+            background-color: #f9fafb;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #e5e7eb;
+            padding: 15px;
+        }
+        .table tbody td {
+            vertical-align: middle;
+            padding: 15px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .item-img {
+            width: 50px; height: 50px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn-action {
+            width: 32px; height: 32px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .btn-action:hover { transform: scale(1.1); }
+
+        /* --- RIGHT SLIDING SIDEBAR (Add/Edit) --- */
+        .right-sidebar {
+            position: fixed; top: 0; right: -500px;
+            width: 450px; height: 100vh;
+            background: #fff;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            z-index: 1050;
+            padding: 40px;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+        }
+        .right-sidebar.active { right: 0; }
+
+        .sidebar-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .sidebar-overlay.active { opacity: 1; pointer-events: all; }
+        /* Update this class in your <style> block */
+        .sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background: #1e1e2d;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            overflow-y: auto; /* <--- ADDS SCROLLING */
+        }
+
+        /* Optional: Make the scrollbar look nicer */
+        .sidebar::-webkit-scrollbar { width: 5px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+        .empty-state i { font-size: 3rem; margin-bottom: 15px; opacity: 0.3; }
+
+        /* Badge Tweaks */
+        .stats-badge {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="#" class="sidebar-brand">
+        <i class="fas fa-compass text-primary"></i> ExplorerHub
+    </a>
+
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist">
+        <small class="text-uppercase text-muted fw-bold mb-2 px-3" style="font-size: 0.7rem;">Main Menu</small>
+
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-users" type="button">
+            <i class="fas fa-users"></i> Users
+        </button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-mosques" type="button">
+            <i class="fas fa-mosque"></i> Mosques
+        </button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-museums" type="button">
+            <i class="fas fa-landmark"></i> Museums
+        </button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-old" type="button">
+            <i class="fas fa-archway"></i> Old Cairo
+        </button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-nile" type="button">
+            <i class="fas fa-water"></i> Nile Views
+        </button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-food" type="button">
+            <i class="fas fa-utensils"></i> Food & Cafe
+        </button>
+        <small class="text-uppercase text-muted fw-bold mb-2 mt-4 px-3 d-block" style="font-size: 0.7rem;">
+            <i class="fas fa-compass me-1"></i> Quick Links
+        </small>
+
+        <div class="nav flex-column nav-pills" id="quick-links">
+            <a class="nav-link" th:href="@{/ratings}">
+                <i class="fas fa-star text-warning me-2"></i> Ratings
+            </a>
+            <a class="nav-link" th:href="@{/show}">
+                <i class="fas fa-heart text-danger me-2"></i> Favourites
+            </a>
+            <a class="nav-link" th:href="@{/ratings-nile}">
+                <i class="fas fa-water text-info me-2"></i> Nile Views
+            </a>
+            <a class="nav-link" th:href="@{/ratingsmusuim}">
+                <i class="fas fa-landmark text-warning me-2"></i> Museums
+            </a>
+            <a class="nav-link" th:href="@{/ratings-foods}">
+                <i class="fas fa-utensils text-success me-2"></i> Food & Cafe
+            </a>
+            <a class="nav-link" th:href="@{/ratings-old}">
+                <i class="fas fa-archway text-light me-2"></i> Old Cairo
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="main-content">
+
+    <div class="top-header">
+        <div>
+            <h1 class="page-title">Dashboard</h1>
+            <p class="text-muted m-0">Welcome back, Admin</p>
+        </div>
+    </div>
+
+    <div class="tab-content" id="v-pills-tabContent">
+
+        <div class="tab-pane fade show active" id="tab-users">
+            <div class="content-card">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="m-0">User Management</h4>
+                </div>
+
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Username</th><th>Email</th><th class="text-end">Actions</th></tr></thead>
+                    <tbody>
+                    <tr th:each="u : ${users}">
+                        <td class="text-muted fw-bold" th:text="'#' + ${u.id}"></td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center text-primary fw-bold me-3" style="width: 40px; height: 40px;">
+                                    <span th:text="${#strings.substring(u.username,0,1).toUpperCase()}"></span>
+                                </div>
+                                <span class="fw-bold" th:text="${u.username}"></span>
+                            </div>
+                        </td>
+                        <td th:text="${u.email}"></td>
+                        <td class="text-end">
+                            <form th:action="@{/admin/deleteUser}" method="post" style="display:inline;">
+                                <input type="hidden" name="id" th:value="${u.id}">
+                                <button class="btn btn-action btn-light text-danger" onclick="return confirm('Delete this user?')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-mosques">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Cairo Mosques</h3>
+                <button class="btn btn-primary" onclick="openSidebar('Mosque')"><i class="fas fa-plus me-2"></i> Add New</button>
+            </div>
+            <div th:replace="~{:: contentTable(${mosques}, ${mosqueRatings}, 'Mosque', '/admin/deleteMosque')}"></div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-museums">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Museums</h3>
+                <button class="btn btn-primary" onclick="openSidebar('Museum')"><i class="fas fa-plus me-2"></i> Add New</button>
+            </div>
+            <div th:replace="~{:: contentTable(${museums}, ${museumRatings}, 'Museum', '/admin/deleteMuseum')}"></div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-old">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Old Cairo</h3>
+                <button class="btn btn-primary" onclick="openSidebar('OldCairo')"><i class="fas fa-plus me-2"></i> Add New</button>
+            </div>
+            <div th:replace="~{:: contentTable(${oldCairos}, ${oldCairoRatings}, 'OldCairo', '/admin/deleteOldCairo')}"></div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-nile">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Nile Spots</h3>
+                <button class="btn btn-primary" onclick="openSidebar('Nile')"><i class="fas fa-plus me-2"></i> Add New</button>
+            </div>
+            <div th:replace="~{:: contentTable(${niles}, ${nileRatings}, 'Nile', '/admin/deleteNile')}"></div>
+        </div>
+
+        <div class="tab-pane fade" id="tab-food">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-bold m-0">Food & Cafes</h3>
+                <button class="btn btn-primary" onclick="openSidebar('Food')"><i class="fas fa-plus me-2"></i> Add New</button>
+            </div>
+            <div th:replace="~{:: contentTable(${foods}, ${foodRatings}, 'Food', '/admin/deleteFood')}"></div>
+        </div>
+
+    </div>
+</div>
+
+<div th:fragment="contentTable(items, ratings, typeStr, deleteUrl)">
+    <div class="content-card">
+
+
+
+        <table class="table table-hover mb-0" th:unless="${#lists.isEmpty(items)}">
+            <thead>
+            <tr>
+                <th style="width: 50px;">Img</th>
+                <th>Title</th>
+                <th>Engagement</th>
+                <th class="text-end">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td>
+                    <img th:src="${item.imageUrl}" class="item-img" alt="img" onerror="this.src='https://via.placeholder.com/150/f3f4f6/000000?text=No+Img'">
+                </td>
+                <td>
+                    <div class="fw-bold text-dark" th:text="${item.title}"></div>
+                    <small class="text-muted" th:text="'ID: #' + ${item.id}"></small>
+                </td>
+                <td>
+                    <div class="d-flex gap-2">
+                            <span class="badge bg-light text-warning border stats-badge">
+                                <i class="fas fa-star me-1"></i>
+                                <span th:text="${ratings != null and ratings.containsKey(item.id) ? #numbers.formatDecimal(ratings.get(item.id), 1, 1) : 'N/A'}"></span>
+                            </span>
+                        <span class="badge bg-light text-danger border stats-badge">
+                                <i class="fas fa-heart me-1"></i>
+                                <span th:text="${item.users != null ? item.users.size() : 0}"></span>
+                            </span>
+                    </div>
+                </td>
+                <td class="text-end">
+                    <button type="button" class="btn btn-action btn-light text-primary me-1"
+                            onclick="openSidebar(this.getAttribute('data-type'), this)"
+                            th:data-type="${typeStr}"
+                            th:data-id="${item.id}"
+                            th:data-title="${item.title}"
+                            th:data-img="${item.imageUrl}"
+                            th:data-meta="${item.metaData}"
+                            title="Edit">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                    <form th:action="@{${deleteUrl}}" method="post" style="display:inline;">
+                        <input type="hidden" name="id" th:value="${item.id}">
+                        <button type="submit" class="btn btn-action btn-light text-danger"
+                                onclick="return confirm('Are you sure you want to delete this item?')"
+                                title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<div class="right-sidebar" id="adminSidebar">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h4 id="sidebarTitle" class="m-0 fw-bold">Add Item</h4>
+        <button type="button" class="btn-close" onclick="closeSidebar()"></button>
+    </div>
+
+    <form id="dynamicContentForm" method="post" th:action="@{/}">
+        <input type="hidden" name="id" id="contentId">
+
+        <div class="mb-4">
+            <label class="form-label fw-bold small text-uppercase text-muted">Title</label>
+            <input type="text" name="title" id="contentTitle" class="form-control form-control-lg bg-light border-0" placeholder="e.g. The Great Pyramid" required>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-bold small text-uppercase text-muted">Image URL</label>
+            <input type="text" name="imageUrl" id="contentImage" class="form-control bg-light border-0" placeholder="https://...">
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label fw-bold small text-uppercase text-muted">Description / Metadata</label>
+            <textarea name="metaData" id="contentMetaData" class="form-control bg-light border-0" rows="8" placeholder="Enter details here..."></textarea>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+                <i class="fas fa-save me-2"></i> Save Changes
+            </button>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const sidebar = document.getElementById('adminSidebar');
+    const overlay = document.getElementById('overlay');
+    const title = document.getElementById('sidebarTitle');
+    const contentForm = document.getElementById('dynamicContentForm');
+
+    function openSidebar(type, btn = null) {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+
+        const isEdit = (btn !== null);
+        title.innerText = (isEdit ? 'Edit ' : 'New ') + type;
+
+        // Map types to Controller Endpoints
+        const urlMap = {
+            'Mosque': '/admin/saveMosque',
+            'Museum': '/admin/saveMuseum',
+            'OldCairo': '/admin/saveOldCairo',
+            'Nile': '/admin/saveNile',
+            'Food': '/admin/saveFood'
+        };
+        contentForm.action = urlMap[type];
+
+        if (isEdit) {
+            document.getElementById('contentId').value = btn.getAttribute('data-id');
+            document.getElementById('contentTitle').value = btn.getAttribute('data-title');
+            document.getElementById('contentImage').value = btn.getAttribute('data-img');
+            document.getElementById('contentMetaData').value = btn.getAttribute('data-meta');
+        } else {
+            contentForm.reset();
+            document.getElementById('contentId').value = null;
+        }
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
