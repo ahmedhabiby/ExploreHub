@@ -1,5 +1,6 @@
 package com.example.explurerhub.Controllers;
 
+import com.example.explurerhub.Dto.UserDto;
 import com.example.explurerhub.Model.User;
 import com.example.explurerhub.Service.UserService;
 import jakarta.validation.Valid;
@@ -7,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,64 +29,74 @@ public class SecurityController {
         this.passwordEncoder = passwordEncoder;
         this.jdbcTemplate = jdbcTemplate;
     }
+
     @GetMapping("/login")
-    public String showLoginPage(Authentication authentication) {
+    public String showLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/signup")
+    public String showSignupForm(Model model) {
+        // Use DTO for the form
+        model.addAttribute("user", new UserDto());
+        return "signup";
     }
 
     @PostMapping("/saveUser")
     public String saveUser(
-            @Valid @ModelAttribute("user") User user,
+            @Valid @ModelAttribute("user") UserDto userDto, // Validate the DTO
             BindingResult result,
             Model model) {
 
-        // ❌ لو في Validation Errors (required / regex)
+        // 1. Validation Errors (Regex/Required)
         if (result.hasErrors()) {
             return "signup";
         }
 
         try {
-            String encodedPassword = passwordEncoder.encode(user.getPassword());
-            user.setPassword(encodedPassword);
+            // 2. Map DTO to Entity
+            User user = new User();
+            user.setUsername(userDto.getUsername());
+            user.setEmail(userDto.getEmail());
 
+            // 3. Encrypt Password
+            String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+            user.setPassword(encodedPassword);
+            user.setEnabled(true);
+
+            // 4. Save
             userService.saveUser(user);
 
+            // 5. Add Role
+            Long newUserId = jdbcTemplate.queryForObject(
+                    "SELECT id FROM users WHERE username = ?",
+                    Long.class,
+                    user.getUsername()
+            );
+            final Long roleId = 2L;
+            jdbcTemplate.update(
+                    "INSERT INTO users_roles (user_id, role_id) VALUES (?, ?)",
+                    newUserId, roleId
+            );
+
         } catch (RuntimeException ex) {
-            // username موجود قبل كده
-            result.rejectValue("username", "error.user", ex.getMessage());
+            // Handle duplicate username/email errors
+            result.rejectValue("username", "error.user", "Username or Email already exists.");
             return "signup";
         }
-
-        Long newUserId = jdbcTemplate.queryForObject(
-                "SELECT id FROM users WHERE username = ?",
-                Long.class,
-                user.getUsername()
-        );
-
-        final Long roleId = 2L;
-        jdbcTemplate.update(
-                "INSERT INTO users_roles (user_id, role_id) VALUES (?, ?)",
-                newUserId, roleId
-        );
 
         return "redirect:/login";
     }
 
-
-    @GetMapping("/signup")
-    public String showSignupForm(Model model) {
-        model.addAttribute("user", new User());
-        return "signup";
-    }
     @GetMapping("/updateUser")
     public String showUpdateForm(@AuthenticationPrincipal UserDetails userDetails, Model model) {
-        String username =userDetails.getUsername();
+        String username = userDetails.getUsername();
         User user = userService.findUserByUsername(username);
         model.addAttribute("user", user);
-        return "update-user"; // Thymeleaf template name
+        return "update-user";
     }
 
-    @PostMapping ("/updateUser")
+    @PostMapping("/updateUser")
     public String updateUser(@ModelAttribute("user") User user){
         userService.updateUser(user);
         return "redirect:/manageUsers";
@@ -103,6 +112,6 @@ public class SecurityController {
     public String showUsers(Model model){
         List<User> users = userService.getAllUser();
         model.addAttribute("users", users);
-        return "manage-users"; // اسم ملف Thymeleaf
+        return "manage-users";
     }
 }

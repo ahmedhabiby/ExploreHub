@@ -2,13 +2,9 @@ package com.example.explurerhub.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,29 +18,24 @@ import java.util.Set;
 @Data
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Username is required")
-    @Size(min = 4, max = 20, message = "Username must be between 4 and 20 characters")
     @Column(nullable = false, unique = true)
     private String username;
-
-    @NotBlank(message = "Password is required and Password must be at least 8 characters and include uppercase, lowercase, number, and special character")
 
     @Column(nullable = false)
     private String password;
 
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email format")
     @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
     private boolean enabled = true;
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+
+    // 1. ROLES: Never use CascadeType.ALL or REMOVE here (it deletes the Role from DB!)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -52,37 +43,61 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE})
-    private List<CairoMosques> cairoMosques=new ArrayList<>();
+    // 2. FAVORITES: Removed CascadeType.REMOVE (So we don't delete the Mosques!)
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<CairoMosques> cairoMosques = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH,
-    })
-    private List<CairoMusiums> cairoMusiums=new ArrayList<>();
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<CairoMusiums> cairoMusiums = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH,CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<oldCairo> oldCairos=new ArrayList<>();
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<oldCairo> oldCairos = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH,CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<Nile> niles=new ArrayList<>();
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<Nile> niles = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH,CascadeType.REMOVE, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    private List<FoodCafe> foodCafes=new ArrayList<>();
+    @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private List<FoodCafe> foodCafes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    // 3. RATINGS: Added orphanRemoval = true to ensure they are fully deleted
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Rating> ratings;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<RateMusiums> rateMusiums;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<RateOldCairo> rateOldCairos;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<RateNile> rateNiles;
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<RateFoodCafe> rateFoodCafes;
 
-
+    // 4. PRE-REMOVE: Manually break the links before deleting the User
+    // This removes the user from the "Favorite Lists" inside the Mosque/Museum entities
+    @PreRemove
+    private void removeAssociations() {
+        for (CairoMosques m : this.cairoMosques) {
+            m.getUsers().remove(this);
+        }
+        for (CairoMusiums m : this.cairoMusiums) {
+            m.getUsers().remove(this);
+        }
+        for (oldCairo m : this.oldCairos) {
+            m.getUsers().remove(this);
+        }
+        for (Nile m : this.niles) {
+            m.getUsers().remove(this);
+        }
+        for (FoodCafe m : this.foodCafes) {
+            m.getUsers().remove(this);
+        }
+    }
 }
