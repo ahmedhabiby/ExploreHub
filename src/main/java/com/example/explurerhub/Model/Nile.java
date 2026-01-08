@@ -25,4 +25,15 @@ public class Nile {
             name = "User_Favourite_Nile"
     )
     private List<User> users=new ArrayList<>();
+    @OneToMany(mappedBy = "nile", cascade =CascadeType.ALL)
+    private List<RateNile> rateNiles;
+
+    // 2. CHANGE: Manually set references to NULL
+    @PreRemove
+    private void removeAssociations() {
+        // A. Remove this mosque from User favorites (Unlinks join table)
+        for (User user : this.users) {
+            user.getCairoMosques().remove(this); // Fixed syntax error here
+        }
+    }
 }

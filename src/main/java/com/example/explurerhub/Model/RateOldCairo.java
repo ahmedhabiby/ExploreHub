@@ -17,7 +17,7 @@ public class RateOldCairo {
     @Column(nullable = false)
     private double ratingValue;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id")
     @JsonIgnore
     private User user;

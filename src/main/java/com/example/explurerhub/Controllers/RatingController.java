@@ -132,5 +132,8 @@ public class RatingController {
         model.addAttribute("averageRatingsMusuims", averageRatings);
 
         return "rate-musuem";
+
     }
+
+
 }

@@ -26,8 +26,20 @@ public class CairoMosques {
     @JoinTable(
             name = "User_Favourite"
     )
-    private List<User> users=new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
-    @OneToMany(mappedBy = "cairoMosques")
+    // 1. CHANGE: Remove CascadeType.REMOVE/ALL so ratings are NOT deleted.
+    @OneToMany(mappedBy = "cairoMosques", cascade =CascadeType.ALL)
     private List<Rating> ratings;
+
+    // 2. CHANGE: Manually set references to NULL
+    @PreRemove
+    private void removeAssociations() {
+        // A. Remove this mosque from User favorites (Unlinks join table)
+        for (User user : this.users) {
+            user.getCairoMosques().remove(this); // Fixed syntax error here
+        }
+
+
+    }
 }

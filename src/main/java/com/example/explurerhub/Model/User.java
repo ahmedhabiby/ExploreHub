@@ -34,7 +34,14 @@ public class User {
     @Column(nullable = false)
     private boolean enabled = true;
 
-    // 1. ROLES: Never use CascadeType.ALL or REMOVE here (it deletes the Role from DB!)
+    // --- FIX 1: Subscriber Relation ---
+    // REMOVED: CascadeType.ALL / REMOVE.
+    // This prevents the Subscriber from being deleted when the User is deleted.
+    @OneToOne(mappedBy = "user", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JsonIgnore
+    private Subscribers subscriber;
+
+    // --- Roles ---
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinTable(
             name = "users_roles",
@@ -43,7 +50,7 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
-    // 2. FAVORITES: Removed CascadeType.REMOVE (So we don't delete the Mosques!)
+    // --- Content Relations ---
     @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<CairoMosques> cairoMosques = new ArrayList<>();
 
@@ -59,7 +66,7 @@ public class User {
     @ManyToMany(mappedBy = "users", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<FoodCafe> foodCafes = new ArrayList<>();
 
-    // 3. RATINGS: Added orphanRemoval = true to ensure they are fully deleted
+    // --- Ratings (Delete ratings if user is deleted) ---
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Rating> ratings;
@@ -80,24 +87,19 @@ public class User {
     @JsonIgnore
     private List<RateFoodCafe> rateFoodCafes;
 
-    // 4. PRE-REMOVE: Manually break the links before deleting the User
-    // This removes the user from the "Favorite Lists" inside the Mosque/Museum entities
+    // --- FIX 2: PreRemove Logic ---
     @PreRemove
     private void removeAssociations() {
-        for (CairoMosques m : this.cairoMosques) {
-            m.getUsers().remove(this);
+        // 1. Unlink the Subscriber (Set Foreign Key to Null)
+        if (this.subscriber != null) {
+            this.subscriber.setUser(null);
         }
-        for (CairoMusiums m : this.cairoMusiums) {
-            m.getUsers().remove(this);
-        }
-        for (oldCairo m : this.oldCairos) {
-            m.getUsers().remove(this);
-        }
-        for (Nile m : this.niles) {
-            m.getUsers().remove(this);
-        }
-        for (FoodCafe m : this.foodCafes) {
-            m.getUsers().remove(this);
-        }
+
+        // 2. Unlink from Favorites lists
+        for (CairoMosques m : this.cairoMosques) m.getUsers().remove(this);
+        for (CairoMusiums m : this.cairoMusiums) m.getUsers().remove(this);
+        for (oldCairo m : this.oldCairos) m.getUsers().remove(this);
+        for (Nile m : this.niles) m.getUsers().remove(this);
+        for (FoodCafe m : this.foodCafes) m.getUsers().remove(this);
     }
 }

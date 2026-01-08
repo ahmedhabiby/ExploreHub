@@ -204,7 +204,7 @@
 
         <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-users" type="button">
             <i class="fas fa-users"></i> Users
-        </button>
+        </button><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-subscribers"><i class="fas fa-envelope"></i> Subscribers</button>
         <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-mosques" type="button">
             <i class="fas fa-mosque"></i> Mosques
         </button>
@@ -227,9 +227,6 @@
         <div class="nav flex-column nav-pills" id="quick-links">
             <a class="nav-link" th:href="@{/ratings}">
                 <i class="fas fa-star text-warning me-2"></i> Ratings
-            </a>
-            <a class="nav-link" th:href="@{/show}">
-                <i class="fas fa-heart text-danger me-2"></i> Favourites
             </a>
             <a class="nav-link" th:href="@{/ratings-nile}">
                 <i class="fas fa-water text-info me-2"></i> Nile Views
@@ -293,7 +290,30 @@
                 </table>
             </div>
         </div>
-
+        <div class="tab-pane fade" id="tab-subscribers">
+            <div class="content-card">
+                <h4 class="mb-4">Subscribers</h4>
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Email</th><th>User</th><th class="text-end">Action</th></tr></thead>
+                    <tbody>
+                    <tr th:each="sub : ${subscribers}">
+                        <td th:text="${sub.id}"></td>
+                        <td th:text="${sub.email}"></td>
+                        <td>
+                            <span th:if="${sub.user != null}" th:text="${sub.user.username}"></span>
+                            <span th:unless="${sub.user != null}" class="text-muted">Guest</span>
+                        </td>
+                        <td class="text-end">
+                            <form th:action="@{/admin/deleteSubscriber}" method="post">
+                                <input type="hidden" name="id" th:value="${sub.id}">
+                                <button class="btn btn-sm btn-light text-danger"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <div class="tab-pane fade" id="tab-mosques">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-bold m-0">Cairo Mosques</h3>

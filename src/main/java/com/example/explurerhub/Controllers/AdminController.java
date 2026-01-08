@@ -24,6 +24,7 @@ public class AdminController {
     @Autowired private FavouriteOldCairoRepo oldCairoRepo;
     @Autowired private FavouriteNileRepo nileRepo;
     @Autowired private FavouriteFoodCafeRepo foodRepo;
+    @Autowired private SubscriberRepo subscribersRepo; // <--- ADD THIS LINE
 
     @Autowired private RatingService mosqueRatingService;
     @Autowired private RatingMusuimService museumRatingService;
@@ -54,6 +55,9 @@ public class AdminController {
         model.addAttribute("oldCairos", oldCairoRepo.findAll());
         model.addAttribute("niles", nileRepo.findAll());
         model.addAttribute("foods", foodRepo.findAll());
+
+        // Inside showDashboard(Model model) { ...
+        model.addAttribute("subscribers", subscribersRepo.findAll()); // <--- ADD THIS LINE
 
         // 2. Load Average Stats (The numbers for the badges)
         model.addAttribute("mosqueRatings", mapRatings(mosqueRatingService.getAverageRatingPerMosque()));
@@ -142,6 +146,12 @@ public class AdminController {
     public String deleteNile(@RequestParam Long id) { nileRepo.deleteById(id); return "redirect:/admin/dashboard"; }
     @PostMapping("/deleteFood")
     public String deleteFood(@RequestParam Long id) { foodRepo.deleteById(id); return "redirect:/admin/dashboard"; }
+    // <--- ADD THIS WHOLE BLOCK
+    @PostMapping("/deleteSubscriber")
+    public String deleteSubscriber(@RequestParam Long id) {
+        subscribersRepo.deleteById(id);
+        return "redirect:/admin/dashboard";
+    }
 
     private Map<Long, Double> mapRatings(List<Object[]> rawList) {
         Map<Long, Double> map = new HashMap<>();
